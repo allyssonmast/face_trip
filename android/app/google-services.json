@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "494310129751",
+    "project_id": "trip-dfae4",
+    "storage_bucket": "trip-dfae4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494310129751:android:131f6eae48fb52e4fa2312",
+        "android_client_info": {
+          "package_name": "com.devally.facetrip"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "494310129751-ei782bdnl8mmd4d6n0h582262egfun4l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4LF0Qz6RPklLHRGIN11aIdVc5FMTVRcw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "494310129751-ei782bdnl8mmd4d6n0h582262egfun4l.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "494310129751-1umfivqaih9jgvpn3l289qam6u4rsk25.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tripChat"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:494310129751:android:da34480d89b99599fa2312",
+        "android_client_info": {
+          "package_name": "com.example.trip_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "494310129751-ei782bdnl8mmd4d6n0h582262egfun4l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4LF0Qz6RPklLHRGIN11aIdVc5FMTVRcw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "494310129751-ei782bdnl8mmd4d6n0h582262egfun4l.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "494310129751-1umfivqaih9jgvpn3l289qam6u4rsk25.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.tripChat"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
