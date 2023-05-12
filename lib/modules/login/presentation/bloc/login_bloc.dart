@@ -9,7 +9,6 @@ import 'package:injectable/injectable.dart';
 
 import '../../domain/entities/user.dart';
 
-
 part 'login_event.dart';
 part 'login_state.dart';
 
@@ -17,9 +16,7 @@ part 'login_state.dart';
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final AuthUseCase loginUsecase;
 
-  LoginBloc({
-    required this.loginUsecase,
-  }) : super(LoginInitial());
+  LoginBloc({required this.loginUsecase}) : super(LoginInitial());
 
   @override
   Stream<LoginState> mapEventToState(LoginEvent event) async* {
@@ -34,30 +31,33 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   Stream<LoginState> _mapLoginWithEmailButtonPressedToState(
       LoginWithEmailButtonPressed event) async* {
+
     yield LoginLoading();
-    final Either<Failure, UserEntity> result =
-    await loginUsecase.loginWithEmailAndPassword(event.email, event.password);
+    final Either<Failure, UserEntity> result = await loginUsecase
+        .loginWithEmailAndPassword(event.email, event.password);
     yield result.fold(
-          (failure) => LoginFailure(errorMessage: _mapFailureToMessage(failure)),
-          (user) => LoginSuccess(user: user),
+      (failure) => LoginFailure(errorMessage: _mapFailureToMessage(failure)),
+      (user) => LoginSuccess(user: user),
     );
   }
 
   Stream<LoginState> _mapLoginWithGoogleButtonPressedToState() async* {
     yield LoginLoading();
-    final Either<Failure, UserEntity> result = await loginUsecase.loginWithGoogle();
+    final Either<Failure, UserEntity> result =
+        await loginUsecase.loginWithGoogle();
     yield result.fold(
-          (failure) => LoginFailure(errorMessage: _mapFailureToMessage(failure)),
-          (user) => LoginSuccess(user: user),
+      (failure) => LoginFailure(errorMessage: _mapFailureToMessage(failure)),
+      (user) => LoginSuccess(user: user),
     );
   }
 
   Stream<LoginState> _mapLoginWithFacebookButtonPressedToState() async* {
     yield LoginLoading();
-    final Either<Failure, UserEntity> result = await loginUsecase.loginWithFacebook();
+    final Either<Failure, UserEntity> result =
+        await loginUsecase.loginWithFacebook();
     yield result.fold(
-          (failure) => LoginFailure(errorMessage: _mapFailureToMessage(failure)),
-          (user) => LoginSuccess(user: user),
+      (failure) => LoginFailure(errorMessage: _mapFailureToMessage(failure)),
+      (user) => LoginSuccess(user: user),
     );
   }
 

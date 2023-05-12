@@ -22,7 +22,7 @@ dependencies:
   dartz:
 
   # Flutter Bloc libraries
-  flutter_bloc:
+  flutter_bloc: ^7.3.3
   bloc:
 
   # GetIt libraries

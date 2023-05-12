@@ -17,6 +17,7 @@ class AuthRepositoryImpl implements AuthRepository {
     try {
       final result = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
       final user = result.user!;
+      print(user.uid);
       return right(UserEntity(
         id: user.uid,
         name: user.displayName ?? '',

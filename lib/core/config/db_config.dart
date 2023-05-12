@@ -7,7 +7,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class DbConfi {
   Future init() async {
-    await dotenv.load(); // Carrega as variáveis do arquivo .env
+    await dotenv.load();
     bool firebaseEmu = dotenv.env["USE_FIREBASE_EMU"] != null;
 
     if (firebaseEmu) {
@@ -18,40 +18,28 @@ class DbConfi {
   }
 
   Future<void> _configureFirebaseAuth() async {
-    String configHost = dotenv.env['FIREBASE_EMU_URL'] ?? '';
-    int configPort = int.parse(dotenv.env['AUTH_EMU_PORT'] ?? '0');
-    // Android emulator must be pointed to 10.0.2.2
     var defaultHost = Platform.isAndroid ? '10.0.2.2' : 'localhost';
-    var host = configHost.isNotEmpty ? configHost : defaultHost;
-    var port = configPort != 0 ? configPort : 9099;
-    await FirebaseAuth.instance.useAuthEmulator(host, port);
-    debugPrint('Using Firebase Auth emulator on: $host:$port');
+    var port = 9099;
+    await FirebaseAuth.instance.useAuthEmulator(defaultHost, port);
+    debugPrint('Using Firebase Auth emulator on: $defaultHost:$port');
   }
 
   Future<void> _configureFirebaseStorage() async {
-    String configHost = dotenv.env['FIREBASE_EMU_URL'] ?? '';
-    int configPort = int.parse(dotenv.env['STORAGE_EMU_PORT'] ?? '0');
-    // Android emulator must be pointed to 10.0.2.2
     var defaultHost = Platform.isAndroid ? '10.0.2.2' : 'localhost';
-    var host = configHost.isNotEmpty ? configHost : defaultHost;
-    var port = configPort != 0 ? configPort : 9199;
-    await FirebaseStorage.instance.useStorageEmulator(host, port);
-    debugPrint('Using Firebase Storage emulator on: $host:$port');
+    var port = 9199;
+    await FirebaseStorage.instance.useStorageEmulator(defaultHost, port);
+    debugPrint('Using Firebase Storage emulator on: $defaultHost:$port');
   }
 
   void _configureFirebaseFirestore() {
-    String configHost = dotenv.env['FIREBASE_EMU_URL'] ?? '';
-    int configPort = int.parse(dotenv.env['DB_EMU_PORT'] ?? '0');
-    // Android emulator must be pointed to 10.0.2.2
     var defaultHost = Platform.isAndroid ? '10.0.2.2' : 'localhost';
-    var host = configHost.isNotEmpty ? configHost : defaultHost;
-    var port = configPort != 0 ? configPort : 8080;
+    var port = 8080;
 
     FirebaseFirestore.instance.settings = Settings(
-      host: '$host:$port',
+      host: '$defaultHost:$port',
       sslEnabled: false,
       persistenceEnabled: false,
     );
-    debugPrint('Using Firebase Firestore emulator on: $host:$port');
+    debugPrint('Using Firebase Firestore emulator on: $defaultHost:$port');
   }
 }
