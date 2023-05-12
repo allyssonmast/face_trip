@@ -1,12 +1,18 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:facetrip/core/shered/route/go_route.dart';
+import 'package:facetrip/core/shered/widget/react_widget.dart';
 import 'package:facetrip/injection.dart';
+import 'package:facetrip/modules/login/presentation/widget/divide_widget.dart';
+import 'package:facetrip/modules/login/presentation/widget/signup_widget.dart';
+import 'package:facetrip/modules/login/presentation/widget/topwelcome_widget.dart';
 import 'package:facetrip/routes/routes_imports.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_signin_button/button_builder.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 import '../bloc/login_bloc.dart';
 
@@ -19,8 +25,10 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
   late final FormGroup _form;
+  final RoundedLoadingButtonController _btnController =
+      RoundedLoadingButtonController();
+
   @override
   void initState() {
     super.initState();
@@ -40,112 +48,96 @@ class _LoginPageState extends State<LoginPage> {
     return BlocProvider(
       create: (_) => getIt<LoginBloc>(),
       child: Scaffold(
-        body: BlocListener<LoginBloc, LoginState>(
+        resizeToAvoidBottomInset: false,
+        body: BlocConsumer<LoginBloc, LoginState>(
           listener: (context, state) {
             print(state);
             if (state is LoginFailure) {
+              _btnController.reset();
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(state.errorMessage),
                 ),
               );
+              _btnController.reset();
             } else if (state is LoginSuccess) {
+              _btnController.success();
               GoTo().route(context, const HomePageRoute());
             }
           },
-          child: BlocBuilder<LoginBloc, LoginState>(
-            builder: (context, state) {
-              print(state);
-              if (state is LoginLoading) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              return SafeArea(
-                child: ReactiveForm(
-                  formGroup: _form,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Welcome back!',
-                          style: Theme.of(context).textTheme.headline6,
-                          textAlign: TextAlign.center,
-                        ),
-                        const SizedBox(height: 32),
-                        ReactiveTextField(
-                          autofocus: false,
-                          formControlName: 'email',
-                          decoration: const InputDecoration(
-                            labelText: 'Email',
-                            border: OutlineInputBorder(),
-                          ),
-                        ),
-                        const SizedBox(height: 16),
-                        ReactiveTextField(
-                          formControlName: 'password',
-                          obscureText: true,
-                          autofocus: false,
-                          decoration: const InputDecoration(
-                            labelText: 'Password',
-                            border: OutlineInputBorder(),
-                          ),
-                        ),
-                        TextButton(
-                          onPressed: () =>
-                              GoTo().route(context, const RegisterPageRoute()),
-                          child: const Text('Singup'),
-                        ),
-                        const SizedBox(height: 32),
-                        SignInButton(
-                          Buttons.Email,
-                          text: 'Login with Email',
-                          onPressed: () {
-                            if (_form.valid) {
-                              final email = _form.value['email'] as String;
-                              final password =
-                                  _form.value['password'] as String;
+          builder: (context, state) {
+            print(state);
+            _btnController.reset();
+            if (state is LoginLoading) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            return SafeArea(
+              child: ReactiveForm(
+                formGroup: _form,
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const WidgetTopWelcome(),
+                      const SizedBox(height: 32),
+                      const ReactWidget(name: 'Email'),
+                      const ReactWidget(name: 'Password'),
+                      RoundedLoadingButton(
+                        color: Theme.of(context).cardColor,
+                        controller: _btnController,
+                        onPressed: () {
+                          if (_form.valid) {
+                            final email = _form.value['email'] as String;
+                            final password = _form.value['password'] as String;
 
-                              getIt<LoginBloc>().add(
-                                LoginWithEmailButtonPressed(
-                                  email: email,
-                                  password: password,
-                                ),
-                              );
-                            } else {
-                              _form.markAllAsTouched();
-                            }
-                          },
-                        ),
-                        const SizedBox(height: 16),
-                        SignInButton(
-                          Buttons.Google,
-                          text: 'Login with Google',
-                          onPressed: () {
                             getIt<LoginBloc>().add(
-                              LoginWithGoogleButtonPressed(),
+                              LoginWithEmailButtonPressed(
+                                email: email,
+                                password: password,
+                              ),
                             );
-                          },
-                        ),
-                        SignInButton(
-                          Buttons.Facebook,
-                          text: 'Login with Facebook',
-                          onPressed: () {
-                            getIt<LoginBloc>().add(
-                              LoginWithFacebookButtonPressed(),
-                            );
-                          },
-                        ),
-                      ],
-                    ),
+                          } else {
+                            _form.markAllAsTouched();
+                            _btnController.reset();
+                          }
+                        },
+                        child: const Text('Login'),
+                      ),
+                      const SignupWidget(),
+                      const SizedBox(height: 16),
+                      const DivideWidget(),
+                      SignInButton(
+                        Buttons.Google,
+                        onPressed: () {
+                          getIt<LoginBloc>().add(
+                            LoginWithGoogleButtonPressed(),
+                          );
+                        },
+                      ),
+                      SignInButton(
+                        Buttons.Facebook,
+                        onPressed: () {
+                          getIt<LoginBloc>().add(
+                            LoginWithFacebookButtonPressed(),
+                          );
+                        },
+                      ),
+                      SignInButtonBuilder(
+                        text: 'Sign in with Email',
+                        icon: Icons.phone_android,
+                        onPressed: () {},
+                        backgroundColor: Colors.blueGrey[700]!,
+                      )
+                    ],
                   ),
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
       ),
     );

@@ -14,6 +14,7 @@ class ReactWidget extends StatelessWidget {
         formControlName: name.toLowerCase(),
         decoration: InputDecoration(
           labelText: name,
+          isDense: true,
           border: const OutlineInputBorder(),
         ),
       ),

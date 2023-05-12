@@ -5,19 +5,30 @@ import 'package:facetrip/core/error/login/failure.dart';
 
 part 'register_state.freezed.dart';
 
+enum RegisterStatus {
+  initial,
+  submitting,
+  success,
+  error,
+}
+
+extension RegisterStatusX on RegisterStatus {
+  bool get isInitial => this == RegisterStatus.initial;
+  bool get isSubmitting => this == RegisterStatus.submitting;
+  bool get isSuccess => this == RegisterStatus.success;
+  bool get isError => this == RegisterStatus.error;
+}
+
 @freezed
-abstract class RegisterState with _$RegisterState {
+class RegisterState with _$RegisterState {
   const factory RegisterState({
-    required String email,
-    required String password,
-    required bool isSubmitting,
-    required Option<Failure> failure,
+    @Default('') String email,
+    @Default('') String password,
+    @Default(RegisterStatus.initial) RegisterStatus status,
   }) = _RegisterState;
 
-  factory RegisterState.initial() => RegisterState(
-    email: '',
-    password: '',
-    isSubmitting: false,
-    failure: none(),
-  );
+  factory RegisterState.initial() => const RegisterState(
+        email: '',
+        password: '',
+      );
 }

@@ -5,8 +5,8 @@ import 'package:facetrip/modules/register/presentation/bloc/register_state.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reactive_forms/reactive_forms.dart';
-import 'package:facetrip/injection.dart';
 
+import '../../../../injection.dart';
 import '../bloc/register_event.dart';
 
 @RoutePage()
@@ -45,43 +45,45 @@ class _RegisterPageState extends State<RegisterPage> {
           title: const Text('SingUp'),
           centerTitle: true,
         ),
-        body: BlocListener<RegisterBloc, RegisterState>(
+        body: BlocConsumer<RegisterBloc, RegisterState>(
             listener: (context, state) {
-              print(state);
-              print('inicial');
-            },
-            child: ReactiveForm(
-              formGroup: _form,
-              child: SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      const ReactWidget(name: 'Name'),
-                      const ReactWidget(name: 'Email'),
-                      const ReactWidget(name: 'Password'),
-                      ElevatedButton(
-                        onPressed: () {
-                          if (_form.valid) {
-                            final email = _form.value['email'] as String;
-                            final password = _form.value['password'] as String;
+          print(state);
+          print('inicial');
+        }, builder: (context, state) {
+          print(state);
+          return ReactiveForm(
+            formGroup: _form,
+            child: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    const ReactWidget(name: 'Name'),
+                    const ReactWidget(name: 'Email'),
+                    const ReactWidget(name: 'Password'),
+                    ElevatedButton(
+                      onPressed: () {
+                        if (_form.valid) {
+                          final email = _form.value['email'] as String;
+                          final password = _form.value['password'] as String;
 
-                            getIt<RegisterBloc>().add(
-                              RegisterEvent.registerWithEmailAndPasswordPressed(
-                                  email, password),
-                            );
-                          } else {
-                            _form.markAllAsTouched();
-                          }
-                        },
-                        child: const Text('Register'),
-                      ),
-                    ],
-                  ),
+                          getIt<RegisterBloc>().add(
+                            RegisterEvent.registerWithEmailAndPasswordPressed(
+                                email, password),
+                          );
+                        } else {
+                          _form.markAllAsTouched();
+                        }
+                      },
+                      child: const Text('Register'),
+                    ),
+                  ],
                 ),
               ),
-            )),
+            ),
+          );
+        }),
       ),
     );
   }

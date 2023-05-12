@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'core/shered/widget/my_circular_indicator.dart';
-import 'modules/home/presentation/page/home_page.dart';
+import 'modules/home/presentation/page/home_widget.dart';
 import 'modules/login/presentation/page/login_page.dart';
 
 class MyAppRouterDelegate extends RouterDelegate<RouteConfig>
@@ -39,8 +39,8 @@ class MyAppRouterDelegate extends RouterDelegate<RouteConfig>
             },
             pages: const [
               MaterialPage(
-                key:  ValueKey('home'),
-                child: HomePage(),
+                key: ValueKey('home'),
+                child: HomeWidget(),
               ),
             ],
           );
@@ -57,7 +57,7 @@ class MyAppRouterDelegate extends RouterDelegate<RouteConfig>
             },
             pages: const [
               MaterialPage(
-                key:  ValueKey('login'),
+                key: ValueKey('login'),
                 child: LoginPage(),
               ),
             ],

@@ -9,60 +9,45 @@ environment:
   sdk: ">=2.19.6 <3.0.0"
 
 dependencies:
+  auto_route: null
+  bloc: null
+  cloud_firestore: null
+  cupertino_icons: null
+  dartz: null
+  equatable: null
+  firebase_auth: null
+  firebase_core: null
+  firebase_storage: null
   flutter:
     sdk: flutter
-
-  # Firebase
-  firebase_core:
-  firebase_auth:
-  firebase_storage:
-  cloud_firestore:
-
-  # Dartz libraries
-  dartz:
-
-  # Flutter Bloc libraries
-  flutter_bloc: ^7.3.3
-  bloc:
-
-  # GetIt libraries
-  get_it:
-  injectable:
-
-  #auto_route
-  auto_route:
-
-  path_provider:
-  flutter_dotenv:
-  equatable:
-  reactive_forms:
-  flutter_signin_button:
-
-  #annotations
-  json_annotation:
-  freezed_annotation:
-
-  cupertino_icons:
+  flutter_bloc: ^8.1.2
+  flutter_dotenv: null
+  flutter_signin_button: null
+  font_awesome_flutter: null
+  freezed_annotation: null
+  get_it: null
+  injectable: null
+  json_annotation: null
+  path_provider: null
+  reactive_forms: null
+  rounded_loading_button: ^2.1.0
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
-
-  injectable_generator:
-
-  auto_route_generator:
+  auto_route_generator: null
 
   # Freezed libraries
-  build_runner:
-  freezed:
+  build_runner: null
+  flutter_lints: null
+  flutter_test:
+    sdk: flutter
+  freezed: null
 
-  json_serializable:
-  flutter_lints:
+  injectable_generator: null
+
+  json_serializable: null
 
 flutter:
   uses-material-design: true
 
   assets:
     - .env
-
-

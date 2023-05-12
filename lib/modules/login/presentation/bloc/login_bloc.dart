@@ -12,33 +12,24 @@ import '../../domain/entities/user.dart';
 part 'login_event.dart';
 part 'login_state.dart';
 
-@Injectable()
+@singleton
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final AuthUseCase loginUsecase;
 
-  LoginBloc({required this.loginUsecase}) : super(LoginInitial());
-
-  @override
-  Stream<LoginState> mapEventToState(LoginEvent event) async* {
-    if (event is LoginWithEmailButtonPressed) {
-      yield* _mapLoginWithEmailButtonPressedToState(event);
-    } else if (event is LoginWithGoogleButtonPressed) {
-      yield* _mapLoginWithGoogleButtonPressedToState();
-    } else if (event is LoginWithFacebookButtonPressed) {
-      yield* _mapLoginWithFacebookButtonPressedToState();
-    }
+  LoginBloc({required this.loginUsecase}) : super(LoginInitial()) {
+    on<LoginWithEmailButtonPressed>(_mapLoginWithEmailButtonPressedToState);
   }
 
-  Stream<LoginState> _mapLoginWithEmailButtonPressedToState(
-      LoginWithEmailButtonPressed event) async* {
+  _mapLoginWithEmailButtonPressedToState(event, emit) async {
+    emit(LoginLoading());
 
-    yield LoginLoading();
     final Either<Failure, UserEntity> result = await loginUsecase
         .loginWithEmailAndPassword(event.email, event.password);
-    yield result.fold(
+    print(result);
+    emit(result.fold(
       (failure) => LoginFailure(errorMessage: _mapFailureToMessage(failure)),
       (user) => LoginSuccess(user: user),
-    );
+    ));
   }
 
   Stream<LoginState> _mapLoginWithGoogleButtonPressedToState() async* {
