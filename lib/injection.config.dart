@@ -13,11 +13,15 @@ import 'package:firebase_auth/firebase_auth.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import 'modules/login/data/core/firebase_module.dart' as _i8;
+import 'modules/login/data/core/firebase_module.dart' as _i12;
 import 'modules/login/data/repositories/auth_repository_impl.dart' as _i5;
 import 'modules/login/domain/repositories/auth_repository.dart' as _i4;
 import 'modules/login/domain/usecases/auth_use_case.dart' as _i6;
-import 'modules/login/presentation/bloc/login_bloc.dart' as _i7;
+import 'modules/login/presentation/bloc/login_bloc.dart' as _i10;
+import 'modules/register/data/repository.dart' as _i8;
+import 'modules/register/domain/repository/create_repository.dart' as _i7;
+import 'modules/register/domain/usecases/create_user_usecase.dart' as _i9;
+import 'modules/register/presentation/bloc/register_bloc.dart' as _i11;
 
 extension GetItInjectableX on _i1.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -37,10 +41,16 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i5.AuthRepositoryImpl(gh<_i3.FirebaseAuth>()));
     gh.factory<_i6.AuthUseCase>(
         () => _i6.AuthUseCaseImpl(gh<_i4.AuthRepository>()));
-    gh.factory<_i7.LoginBloc>(
-        () => _i7.LoginBloc(loginUsecase: gh<_i6.AuthUseCase>()));
+    gh.factory<_i7.CreateRepository>(
+        () => _i8.CreateRepositoryImp(gh<_i3.FirebaseAuth>()));
+    gh.factory<_i9.CreateUser>(
+        () => _i9.CreateUserImp(gh<_i7.CreateRepository>()));
+    gh.factory<_i10.LoginBloc>(
+        () => _i10.LoginBloc(loginUsecase: gh<_i6.AuthUseCase>()));
+    gh.factory<_i11.RegisterBloc>(
+        () => _i11.RegisterBloc(gh<_i9.CreateUser>()));
     return this;
   }
 }
 
-class _$FirebaseInjectableModule extends _i8.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i12.FirebaseInjectableModule {}

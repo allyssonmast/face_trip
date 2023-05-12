@@ -9,5 +9,4 @@ abstract class AuthRepository {
   Future<Either<Failure, UserEntity>> loginWithFacebook();
   Future<Either<Failure, UserEntity>> loginWithGoogle();
   Future<Either<Failure, UserEntity>> loginWithPhone(String phoneNumber);
-
 }

@@ -1,6 +1,8 @@
 import 'package:facetrip/core/shered/widget/my_circular_indicator.dart';
 import 'package:facetrip/injection.dart';
 import 'package:facetrip/modules/home/presentation/page/home_page.dart';
+import 'package:facetrip/routes/routes_imports.dart';
+import 'package:facetrip/stream_login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:facetrip/modules/login/presentation/page/login_page.dart';
@@ -25,13 +27,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
+      routerConfig: AppRouter().config(),
+      /*
       home: StreamBuilder<User?>(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, snapshot) {
@@ -45,6 +49,8 @@ class MyApp extends StatelessWidget {
           return const LoginPage();
         },
       ),
+
+       */
     );
   }
 }

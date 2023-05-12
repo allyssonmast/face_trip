@@ -29,6 +29,9 @@ dependencies:
   get_it:
   injectable:
 
+  #auto_route
+  auto_route:
+
   path_provider:
   flutter_dotenv:
   equatable:
@@ -46,6 +49,8 @@ dev_dependencies:
     sdk: flutter
 
   injectable_generator:
+
+  auto_route_generator:
 
   # Freezed libraries
   build_runner:
