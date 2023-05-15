@@ -24,6 +24,7 @@ class RegisterState with _$RegisterState {
   const factory RegisterState({
     @Default('') String email,
     @Default('') String password,
+    @Default('') String error,
     @Default(RegisterStatus.initial) RegisterStatus status,
   }) = _RegisterState;
 

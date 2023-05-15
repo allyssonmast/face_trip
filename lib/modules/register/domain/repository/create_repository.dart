@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:facetrip/core/error/login/failure.dart';
-import 'package:facetrip/modules/login/domain/entities/user.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class CreateRepository {
-  Future<Either<Failure, UserEntity>> createUser(String email, String password);
+  Future<Either<Failure, User>> createUser(String email, String password);
 }

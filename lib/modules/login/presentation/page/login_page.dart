@@ -51,7 +51,6 @@ class _LoginPageState extends State<LoginPage> {
         resizeToAvoidBottomInset: false,
         body: BlocConsumer<LoginBloc, LoginState>(
           listener: (context, state) {
-            print(state);
             if (state is LoginFailure) {
               _btnController.reset();
               ScaffoldMessenger.of(context).showSnackBar(
@@ -62,17 +61,10 @@ class _LoginPageState extends State<LoginPage> {
               _btnController.reset();
             } else if (state is LoginSuccess) {
               _btnController.success();
-              GoTo().route(context, const HomePageRoute());
+              GoTo().route(context, '/');
             }
           },
           builder: (context, state) {
-            print(state);
-            _btnController.reset();
-            if (state is LoginLoading) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
             return SafeArea(
               child: ReactiveForm(
                 formGroup: _form,
@@ -94,12 +86,12 @@ class _LoginPageState extends State<LoginPage> {
                             final email = _form.value['email'] as String;
                             final password = _form.value['password'] as String;
 
-                            getIt<LoginBloc>().add(
-                              LoginWithEmailButtonPressed(
-                                email: email,
-                                password: password,
-                              ),
-                            );
+                            context.read<LoginBloc>().add(
+                                  LoginWithEmailButtonPressed(
+                                    email: email,
+                                    password: password,
+                                  ),
+                                );
                           } else {
                             _form.markAllAsTouched();
                             _btnController.reset();
@@ -113,17 +105,17 @@ class _LoginPageState extends State<LoginPage> {
                       SignInButton(
                         Buttons.Google,
                         onPressed: () {
-                          getIt<LoginBloc>().add(
-                            LoginWithGoogleButtonPressed(),
-                          );
+                          context.read<LoginBloc>().add(
+                                LoginWithGoogleButtonPressed(),
+                              );
                         },
                       ),
                       SignInButton(
                         Buttons.Facebook,
                         onPressed: () {
-                          getIt<LoginBloc>().add(
-                            LoginWithFacebookButtonPressed(),
-                          );
+                          context.read<LoginBloc>().add(
+                                LoginWithFacebookButtonPressed(),
+                              );
                         },
                       ),
                       SignInButtonBuilder(

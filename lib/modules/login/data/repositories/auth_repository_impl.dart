@@ -13,15 +13,13 @@ class AuthRepositoryImpl implements AuthRepository {
   AuthRepositoryImpl(this._firebaseAuth);
 
   @override
-  Future<Either<Failure, UserEntity>> loginWithEmailAndPassword(String email, String password) async {
+  Future<Either<Failure, User>> loginWithEmailAndPassword(
+      String email, String password) async {
     try {
-      final result = await _firebaseAuth.signInWithEmailAndPassword(email: email, password: password);
+      final result = await _firebaseAuth.signInWithEmailAndPassword(
+          email: email, password: password);
       final user = result.user!;
-      return right(UserEntity(
-        id: user.uid,
-        name: user.displayName ?? '',
-        email: user.email ?? '',
-      ));
+      return right(user);
     } on FirebaseAuthException catch (e) {
       print(e);
       return left(const Failure.networkError());
@@ -31,19 +29,19 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  Future<Either<Failure, UserEntity>> loginWithFacebook() {
+  Future<Either<Failure, User>> loginWithFacebook() {
     // TODO: Implementar login com Facebook
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<Failure, UserEntity>> loginWithGoogle() {
+  Future<Either<Failure, User>> loginWithGoogle() {
     // TODO: Implementar login com Google
     throw UnimplementedError();
   }
 
   @override
-  Future<Either<Failure, UserEntity>> loginWithPhone(String phoneNumber) {
+  Future<Either<Failure, User>> loginWithPhone(String phoneNumber) {
     // TODO: Implementar login com telefone
     throw UnimplementedError();
   }

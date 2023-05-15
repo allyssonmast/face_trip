@@ -1,4 +1,5 @@
 import 'package:facetrip/bloc_observer.dart';
+import 'package:facetrip/generate_database_fake.dart';
 import 'package:facetrip/injection.dart';
 
 import 'package:firebase_core/firebase_core.dart';
@@ -18,5 +19,6 @@ void main() async {
   await DbConfi().init();
   configureDependencies();
   Bloc.observer = TripBlocObserver();
+  //await GenerateDbFake().addFakeUsersToFirestore();
   runApp(const MyApp());
 }

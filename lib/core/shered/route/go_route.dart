@@ -2,10 +2,11 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
 
 class GoTo {
-  void route(BuildContext context, PageRouteInfo route) async {
-    await AutoRouter.of(context).push(route);
+  void route(BuildContext context, String route) async {
+    await AutoRouter.of(context).pushNamed(route);
   }
-  void back(BuildContext context){
+
+  void back(BuildContext context) {
     AutoRouter.of(context).back();
   }
 }

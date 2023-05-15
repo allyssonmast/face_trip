@@ -8,43 +8,103 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:auto_route/auto_route.dart' as _i4;
-import 'package:facetrip/modules/home/presentation/page/home_page.dart' as _i1;
-import 'package:facetrip/modules/login/presentation/page/login_page.dart'
+import 'package:auto_route/auto_route.dart' as _i8;
+import 'package:facetrip/modules/contact_details/presentation/page/contact_details_page.dart'
+    as _i1;
+import 'package:facetrip/modules/dashboard/presentation/page/dashboard_page.dart'
     as _i2;
+import 'package:facetrip/modules/home/presentation/page/home_page.dart' as _i3;
+import 'package:facetrip/modules/login/presentation/page/login_page.dart'
+    as _i4;
 import 'package:facetrip/modules/register/presentation/page/register_page.dart'
-    as _i3;
+    as _i5;
+import 'package:facetrip/modules/search/presentation/pages/search_contacts_page.dart'
+    as _i6;
+import 'package:facetrip/modules/settings/presentation/page/settings_page.dart'
+    as _i7;
 
-abstract class $AppRouter extends _i4.RootStackRouter {
+abstract class $AppRouter extends _i8.RootStackRouter {
   $AppRouter({super.navigatorKey});
 
   @override
-  final Map<String, _i4.PageFactory> pagesMap = {
-    HomePageRoute.name: (routeData) {
-      return _i4.AutoRoutePage<dynamic>(
+  final Map<String, _i8.PageFactory> pagesMap = {
+    ContactDetailsPageRoute.name: (routeData) {
+      return _i8.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i1.HomePage(),
+        child: const _i1.ContactDetailsPage(),
+      );
+    },
+    DashboardPageRoute.name: (routeData) {
+      return _i8.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i2.DashboardPage(),
+      );
+    },
+    HomePageRoute.name: (routeData) {
+      return _i8.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i3.HomePage(),
       );
     },
     LoginPageRoute.name: (routeData) {
-      return _i4.AutoRoutePage<dynamic>(
+      return _i8.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i2.LoginPage(),
+        child: const _i4.LoginPage(),
       );
     },
     RegisterPageRoute.name: (routeData) {
-      return _i4.AutoRoutePage<dynamic>(
+      return _i8.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i3.RegisterPage(),
+        child: const _i5.RegisterPage(),
+      );
+    },
+    SearchContactsRoute.name: (routeData) {
+      return _i8.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i6.SearchContacts(),
+      );
+    },
+    SettingsPageRoute.name: (routeData) {
+      return _i8.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i7.SettingsPage(),
       );
     },
   };
 }
 
 /// generated route for
-/// [_i1.HomePage]
-class HomePageRoute extends _i4.PageRouteInfo<void> {
-  const HomePageRoute({List<_i4.PageRouteInfo>? children})
+/// [_i1.ContactDetailsPage]
+class ContactDetailsPageRoute extends _i8.PageRouteInfo<void> {
+  const ContactDetailsPageRoute({List<_i8.PageRouteInfo>? children})
+      : super(
+          ContactDetailsPageRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'ContactDetailsPageRoute';
+
+  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i2.DashboardPage]
+class DashboardPageRoute extends _i8.PageRouteInfo<void> {
+  const DashboardPageRoute({List<_i8.PageRouteInfo>? children})
+      : super(
+          DashboardPageRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'DashboardPageRoute';
+
+  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i3.HomePage]
+class HomePageRoute extends _i8.PageRouteInfo<void> {
+  const HomePageRoute({List<_i8.PageRouteInfo>? children})
       : super(
           HomePageRoute.name,
           initialChildren: children,
@@ -52,13 +112,13 @@ class HomePageRoute extends _i4.PageRouteInfo<void> {
 
   static const String name = 'HomePageRoute';
 
-  static const _i4.PageInfo<void> page = _i4.PageInfo<void>(name);
+  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i2.LoginPage]
-class LoginPageRoute extends _i4.PageRouteInfo<void> {
-  const LoginPageRoute({List<_i4.PageRouteInfo>? children})
+/// [_i4.LoginPage]
+class LoginPageRoute extends _i8.PageRouteInfo<void> {
+  const LoginPageRoute({List<_i8.PageRouteInfo>? children})
       : super(
           LoginPageRoute.name,
           initialChildren: children,
@@ -66,13 +126,13 @@ class LoginPageRoute extends _i4.PageRouteInfo<void> {
 
   static const String name = 'LoginPageRoute';
 
-  static const _i4.PageInfo<void> page = _i4.PageInfo<void>(name);
+  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i3.RegisterPage]
-class RegisterPageRoute extends _i4.PageRouteInfo<void> {
-  const RegisterPageRoute({List<_i4.PageRouteInfo>? children})
+/// [_i5.RegisterPage]
+class RegisterPageRoute extends _i8.PageRouteInfo<void> {
+  const RegisterPageRoute({List<_i8.PageRouteInfo>? children})
       : super(
           RegisterPageRoute.name,
           initialChildren: children,
@@ -80,5 +140,33 @@ class RegisterPageRoute extends _i4.PageRouteInfo<void> {
 
   static const String name = 'RegisterPageRoute';
 
-  static const _i4.PageInfo<void> page = _i4.PageInfo<void>(name);
+  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i6.SearchContacts]
+class SearchContactsRoute extends _i8.PageRouteInfo<void> {
+  const SearchContactsRoute({List<_i8.PageRouteInfo>? children})
+      : super(
+          SearchContactsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SearchContactsRoute';
+
+  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i7.SettingsPage]
+class SettingsPageRoute extends _i8.PageRouteInfo<void> {
+  const SettingsPageRoute({List<_i8.PageRouteInfo>? children})
+      : super(
+          SettingsPageRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SettingsPageRoute';
+
+  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
 }

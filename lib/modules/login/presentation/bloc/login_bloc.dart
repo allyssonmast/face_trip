@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:facetrip/core/error/login/failure.dart';
 import 'package:facetrip/modules/login/domain/usecases/auth_use_case.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../domain/entities/user.dart';
@@ -12,7 +13,7 @@ import '../../domain/entities/user.dart';
 part 'login_event.dart';
 part 'login_state.dart';
 
-@singleton
+@injectable
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final AuthUseCase loginUsecase;
 
@@ -23,7 +24,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   _mapLoginWithEmailButtonPressedToState(event, emit) async {
     emit(LoginLoading());
 
-    final Either<Failure, UserEntity> result = await loginUsecase
+    final Either<Failure, User> result = await loginUsecase
         .loginWithEmailAndPassword(event.email, event.password);
     print(result);
     emit(result.fold(
@@ -34,8 +35,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   Stream<LoginState> _mapLoginWithGoogleButtonPressedToState() async* {
     yield LoginLoading();
-    final Either<Failure, UserEntity> result =
-        await loginUsecase.loginWithGoogle();
+    final Either<Failure, User> result = await loginUsecase.loginWithGoogle();
     yield result.fold(
       (failure) => LoginFailure(errorMessage: _mapFailureToMessage(failure)),
       (user) => LoginSuccess(user: user),
@@ -44,8 +44,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   Stream<LoginState> _mapLoginWithFacebookButtonPressedToState() async* {
     yield LoginLoading();
-    final Either<Failure, UserEntity> result =
-        await loginUsecase.loginWithFacebook();
+    final Either<Failure, User> result = await loginUsecase.loginWithFacebook();
     yield result.fold(
       (failure) => LoginFailure(errorMessage: _mapFailureToMessage(failure)),
       (user) => LoginSuccess(user: user),

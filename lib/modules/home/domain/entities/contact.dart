@@ -1,6 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'contact.freezed.dart';
+part 'contact.g.dart';
 
 @freezed
 class ContactEntity with _$ContactEntity {
@@ -10,4 +11,7 @@ class ContactEntity with _$ContactEntity {
     required String email,
     required String url,
   }) = _ContactEntity;
+
+  factory ContactEntity.fromJson(Map<String, Object?> json) =>
+      _$ContactEntityFromJson(json);
 }

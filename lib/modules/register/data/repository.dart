@@ -11,17 +11,13 @@ class CreateRepositoryImp implements CreateRepository {
 
   CreateRepositoryImp(this._firebaseAuth);
   @override
-  Future<Either<Failure, UserEntity>> createUser(
+  Future<Either<Failure, User>> createUser(
       String email, String password) async {
     try {
       final result = await _firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
-      final user = result.user!;
-      return right(UserEntity(
-        id: user.uid,
-        name: user.displayName ?? '',
-        email: user.email ?? '',
-      ));
+
+      return right(result.user!);
     } on FirebaseAuthException catch (e) {
       print(e);
       return left(const Failure.networkError());

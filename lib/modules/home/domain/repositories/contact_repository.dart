@@ -5,4 +5,5 @@ import '../entities/contact.dart';
 
 abstract class ContactRepository {
   Future<Either<Failure, List<ContactEntity>>> call();
+  Future<Either<Failure, bool>> addContact(ContactEntity contact);
 }

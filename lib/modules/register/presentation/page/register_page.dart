@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:facetrip/core/shered/route/go_route.dart';
 import 'package:facetrip/core/shered/widget/react_widget.dart';
 import 'package:facetrip/modules/register/presentation/bloc/register_bloc.dart';
 import 'package:facetrip/modules/register/presentation/bloc/register_state.dart';
@@ -47,10 +48,22 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
         body: BlocConsumer<RegisterBloc, RegisterState>(
             listener: (context, state) {
-          print(state);
-          print('inicial');
+          switch (state.status) {
+            case RegisterStatus.initial:
+              break;
+            case RegisterStatus.submitting:
+              break;
+            case RegisterStatus.success:
+              break;
+            case RegisterStatus.error:
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(state.error),
+                ),
+              );
+              break;
+          }
         }, builder: (context, state) {
-          print(state);
           return ReactiveForm(
             formGroup: _form,
             child: SafeArea(
@@ -65,13 +78,18 @@ class _RegisterPageState extends State<RegisterPage> {
                     ElevatedButton(
                       onPressed: () {
                         if (_form.valid) {
+                          final name = _form.value['name'] as String;
                           final email = _form.value['email'] as String;
                           final password = _form.value['password'] as String;
 
-                          getIt<RegisterBloc>().add(
-                            RegisterEvent.registerWithEmailAndPasswordPressed(
-                                email, password),
-                          );
+                          context.read<RegisterBloc>().add(
+                                RegisterEvent
+                                    .registerWithEmailAndPasswordPressed(
+                                  email,
+                                  password,
+                                  name,
+                                ),
+                              );
                         } else {
                           _form.markAllAsTouched();
                         }
