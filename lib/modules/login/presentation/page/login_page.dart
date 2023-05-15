@@ -5,7 +5,6 @@ import 'package:facetrip/injection.dart';
 import 'package:facetrip/modules/login/presentation/widget/divide_widget.dart';
 import 'package:facetrip/modules/login/presentation/widget/signup_widget.dart';
 import 'package:facetrip/modules/login/presentation/widget/topwelcome_widget.dart';
-import 'package:facetrip/routes/routes_imports.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_signin_button/button_builder.dart';

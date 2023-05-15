@@ -1,17 +1,21 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:facetrip/core/error/login/failure.dart';
 import 'package:facetrip/modules/login/domain/entities/user.dart';
 import 'package:facetrip/modules/settings/domain/repository/settings_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: SettingsRepository)
 class SettingsRepositoryImpl implements SettingsRepository {
   final FirebaseFirestore _firestore;
+  final FirebaseStorage _firebaseStorage;
   final FirebaseAuth _auth;
 
-  SettingsRepositoryImpl(this._auth, this._firestore);
+  SettingsRepositoryImpl(this._auth, this._firestore, this._firebaseStorage);
 
   @override
   Future<Either<Failure, UserEntity>> getUserData() async {
@@ -49,6 +53,23 @@ class SettingsRepositoryImpl implements SettingsRepository {
       return const Left(Failure.networkError());
     } catch (e) {
       return const Left(ServerFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, String>> saveImage(File file) async {
+    final storageRef =
+        _firebaseStorage.ref().child('users/${_auth.currentUser!.uid}');
+    final uploadTask = storageRef.putFile(file);
+
+    try {
+      final snapshot = await uploadTask.whenComplete(() {});
+      final imageUrl = await snapshot.ref.getDownloadURL();
+      return Right(imageUrl);
+    } on FirebaseException catch (e) {
+      return const Left(Failure.networkError());
+    } catch (e) {
+      return const Left(Failure.serverError());
     }
   }
 }

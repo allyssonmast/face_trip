@@ -80,7 +80,7 @@ class ContactDetailsWidget extends StatelessWidget {
                   icon: const Icon(Icons.add),
                 ),
                 title: Text(userEntity.name),
-                subtitle: Text(userEntity.isTraveled == 'true'
+                subtitle: Text(userEntity.isTraveled == true
                     ? 'Is traveling '
                     : 'Is not traveling'),
               ),

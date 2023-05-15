@@ -11,7 +11,7 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       email: json['email'] as String,
       name: json['name'] as String,
       description: json['description'] as String,
-      isTraveled: json['isTraveled'] as String,
+      isTraveled: json['isTraveled'] as bool,
       url: json['url'] as String,
       listContact: (json['listContact'] as List<dynamic>)
           .map((e) => e as String)

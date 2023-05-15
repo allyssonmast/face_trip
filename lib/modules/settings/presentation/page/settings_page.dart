@@ -27,9 +27,13 @@ class SettingsPage extends StatelessWidget {
               return const MyCircularIndicator();
             }
             if (state.status.isLoaded) {
-              return const SettingWidget();
+              var user = context.watch<SettingsBloc>().state.user;
+              return SettingWidget(user: user!);
             } else if (state.status.isError) {
               return const FailureWidget();
+            } else if (state.status.isUpdated) {
+              var user = context.watch<SettingsBloc>().state.user;
+              return SettingWidget(user: user!);
             } else {
               return const MyCircularIndicator();
             }

@@ -4,4 +4,5 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class CreateRepository {
   Future<Either<Failure, User>> createUser(String email, String password);
+  Future<Either<Failure, void>> saveUser(String email, String name);
 }

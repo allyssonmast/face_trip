@@ -10,7 +10,7 @@ class UserEntity with _$UserEntity {
     required String email,
     required String name,
     required String description,
-    required String isTraveled,
+    required bool isTraveled,
     required String url,
     required List<String> listContact,
   }) = _User;
