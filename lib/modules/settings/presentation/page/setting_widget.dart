@@ -1,3 +1,4 @@
+import 'package:facetrip/core/constants/constants.dart';
 import 'package:facetrip/core/shered/widget/react_widget.dart';
 import 'package:facetrip/modules/login/domain/entities/user.dart';
 import 'package:facetrip/modules/settings/presentation/bloc/settings_bloc.dart';
@@ -69,14 +70,14 @@ class _SettingWidgetState extends State<SettingWidget> {
           child: SafeArea(
             child: SingleChildScrollView(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                padding: paddingHorizonteLarge,
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Center(
                         child: Card(
                           clipBehavior: Clip.hardEdge,
-                          margin: const EdgeInsets.only(top: 32, bottom: 16),
+                          margin: paddingTitele,
                           child: InkWell(
                             onTap: () {
                               context

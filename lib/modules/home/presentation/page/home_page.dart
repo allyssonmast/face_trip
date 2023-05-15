@@ -35,6 +35,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    List<String> listEmail = [];
     return Scaffold(
       body: BlocProvider<HomeBloc>(
         create: (_) => getIt<HomeBloc>(),
@@ -57,24 +58,11 @@ class _HomePageState extends State<HomePage> {
                     );
                   });
             }
+
+            // print(context.watch<HomeBloc>().state.contacts);
           },
           builder: (context, state) {
-            switch (state.status) {
-              case HomeStatus.initial:
-                context.read<HomeBloc>().add(const HomeEvent.started());
-                return const MyCircularIndicator();
-
-              case HomeStatus.loading:
-                return const MyCircularIndicator();
-
-              case HomeStatus.error:
-                return const Center(
-                  child: Text('Error'),
-                );
-
-              default:
-                return const HomeWidget();
-            }
+            return const HomeWidget();
           },
         ),
       ),

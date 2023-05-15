@@ -6,7 +6,7 @@ import 'package:injectable/injectable.dart';
 import '../../../../core/error/login/failure.dart';
 
 abstract class GetContactsUsecase {
-  Future<Either<Failure, List<UserEntity>>> call();
+  Future<Either<Failure, List<UserEntity>>> call(List<String> listEmail);
 }
 
 @Injectable(as: GetContactsUsecase)
@@ -15,7 +15,7 @@ class GetContactsUsecaseImp implements GetContactsUsecase {
 
   GetContactsUsecaseImp(this._repository);
   @override
-  Future<Either<Failure, List<UserEntity>>> call() async {
-    return await _repository();
+  Future<Either<Failure, List<UserEntity>>> call(List<String> listEmail) async {
+    return await _repository(listEmail);
   }
 }

@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:facetrip/core/error/login/failure.dart';
@@ -15,14 +13,12 @@ class ContactRepositoryImp implements ContactRepository {
 
   ContactRepositoryImp(this._store, this._auth);
   @override
-  Future<Either<Failure, List<UserEntity>>> call() async {
+  Future<Either<Failure, List<UserEntity>>> call(List<String> listEmail) async {
     try {
       var result = await _store
           .collection('users')
-          .where('listContact', arrayContains: _auth.currentUser!.email)
+          .where('email', whereIn: listEmail)
           .get();
-
-      print(result.docs);
 
       var list = result.docs.map((e) => UserEntity.fromJson(e.data())).toList();
 

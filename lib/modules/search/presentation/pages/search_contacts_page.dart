@@ -33,6 +33,7 @@ class _SearchContactsState extends State<SearchContacts> {
               if (state.status.isInitial) {
                 context.read<SearchBloc>().add(const SearchEvent.started());
               }
+              print(state.status);
               if (state.status.isLoaded) {
                 return const SearchWidget();
               } else if (state.status.isError) {

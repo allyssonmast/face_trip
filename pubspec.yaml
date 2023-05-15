@@ -36,6 +36,8 @@ dependencies:
   shared_preferences: ^2.1.1
   flutter_staggered_grid_view:
   image_picker:
+  share_plus:
+  rxdart:
 
 dev_dependencies:
   auto_route_generator: null
@@ -51,8 +53,25 @@ dev_dependencies:
 
   json_serializable: ^6.6.2
 
+  flutter_launcher_icons:
+  flutter_native_splash:
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/splash_icon.jpg"
+  min_sdk_android: 21
+  adaptive_icon_background: "#047060"
+  adaptive_icon_foreground: "assets/splash_icon.jpg"
+
+flutter_native_splash:
+  color: "#047060"
+  image: "assets/splash_icon.jpg"
+  web: false
+
 flutter:
   uses-material-design: true
 
   assets:
     - .env
+    - assets/

@@ -1,5 +1,7 @@
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:facetrip/core/constants/constants.dart';
 import 'package:facetrip/core/shered/widget/no_item_widget.dart';
+import 'package:facetrip/modules/contact_details/presentation/page/contact_details_widget.dart';
+import 'package:facetrip/modules/home/presentation/widget/contact_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,12 +17,13 @@ class SearchWidget extends StatelessWidget {
     var list = context.watch<SearchBloc>().state.contacts ?? [];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
+      mainAxisSize: MainAxisSize.min,
       children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: paddingSmall,
           child: CupertinoTextFormFieldRow(
             placeholder: 'Search a friend',
-            padding: const EdgeInsets.all(16),
+            padding: paddingMedium,
             controller: textController,
             decoration: BoxDecoration(
               color: Colors.white38,
@@ -36,7 +39,7 @@ class SearchWidget extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: paddingSmall,
           child: ElevatedButton(
             onPressed: () => context
                 .read<SearchBloc>()
@@ -57,16 +60,7 @@ class SearchWidget extends StatelessWidget {
                     itemCount: list.length,
                     itemBuilder: (_, index) {
                       var contact = list[index];
-                      return ListTile(
-                        onTap: () {},
-                        leading: CircleAvatar(
-                          backgroundImage:
-                              CachedNetworkImageProvider(contact.url),
-                        ),
-                        horizontalTitleGap: 0,
-                        title: Text(contact.name),
-                        trailing: const Icon(Icons.delete_outline),
-                      );
+                      return ContactWidget(contact: contact);
                     }),
               )
             : const NoItemWidget()

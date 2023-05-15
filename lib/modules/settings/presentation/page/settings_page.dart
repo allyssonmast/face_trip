@@ -21,7 +21,6 @@ class SettingsPage extends StatelessWidget {
             // TODO: implement listener
           },
           builder: (context, state) {
-            print(state.status);
             if (state.status.isInitial) {
               context.read<SettingsBloc>().add(const SettingsEvent.started());
               return const MyCircularIndicator();

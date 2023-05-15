@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:facetrip/core/config/user_server.dart';
 import 'package:facetrip/modules/home/domain/usecases/getcontacts_usecase.dart';
 import 'package:facetrip/modules/login/domain/entities/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -8,21 +9,31 @@ part 'home_event.dart';
 part 'home_state.dart';
 part 'home_bloc.freezed.dart';
 
-@injectable
+@lazySingleton
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final GetContactsUsecase _getContactsUsecase;
+  final UserService _userService;
 
-  HomeBloc(this._getContactsUsecase) : super(const HomeState()) {
+  HomeBloc(this._getContactsUsecase, this._userService)
+      : super(const HomeState()) {
     on<HomeEvent>((event, emit) async {
       if (event is _Started) {
-        emit(state.copyWith(status: HomeStatus.loading));
-        var result = await _getContactsUsecase();
+        _userService.loadCurrentUser();
+
+        if (event.userEntity.listContact.isEmpty) {
+          emit(state.copyWith(status: HomeStatus.loaded, contacts: []));
+          return;
+        }
+
+        var result = await _getContactsUsecase(event.userEntity.listContact);
 
         result.fold(
           (faiulure) => emit(state.copyWith(
               status: HomeStatus.error, errorMessage: 'HomeStatus.error')),
-          (contacts) => emit(
-              state.copyWith(status: HomeStatus.loaded, contacts: contacts)),
+          (contacts) => emit(state.copyWith(
+              status: HomeStatus.loaded,
+              contacts: contacts,
+              user: event.userEntity)),
         );
       }
 
