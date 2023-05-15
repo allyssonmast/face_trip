@@ -14,6 +14,7 @@ import 'package:facetrip/modules/contact_details/presentation/page/contact_detai
 import 'package:facetrip/modules/dashboard/presentation/page/dashboard_page.dart'
     as _i2;
 import 'package:facetrip/modules/home/presentation/page/home_page.dart' as _i3;
+import 'package:facetrip/modules/login/domain/entities/user.dart' as _i10;
 import 'package:facetrip/modules/login/presentation/page/login_page.dart'
     as _i4;
 import 'package:facetrip/modules/register/presentation/page/register_page.dart'
@@ -22,6 +23,7 @@ import 'package:facetrip/modules/search/presentation/pages/search_contacts_page.
     as _i6;
 import 'package:facetrip/modules/settings/presentation/page/settings_page.dart'
     as _i7;
+import 'package:flutter/material.dart' as _i9;
 
 abstract class $AppRouter extends _i8.RootStackRouter {
   $AppRouter({super.navigatorKey});
@@ -29,9 +31,13 @@ abstract class $AppRouter extends _i8.RootStackRouter {
   @override
   final Map<String, _i8.PageFactory> pagesMap = {
     ContactDetailsPageRoute.name: (routeData) {
+      final args = routeData.argsAs<ContactDetailsPageRouteArgs>();
       return _i8.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i1.ContactDetailsPage(),
+        child: _i1.ContactDetailsPage(
+          key: args.key,
+          userEntity: args.userEntity,
+        ),
       );
     },
     DashboardPageRoute.name: (routeData) {
@@ -75,16 +81,41 @@ abstract class $AppRouter extends _i8.RootStackRouter {
 
 /// generated route for
 /// [_i1.ContactDetailsPage]
-class ContactDetailsPageRoute extends _i8.PageRouteInfo<void> {
-  const ContactDetailsPageRoute({List<_i8.PageRouteInfo>? children})
-      : super(
+class ContactDetailsPageRoute
+    extends _i8.PageRouteInfo<ContactDetailsPageRouteArgs> {
+  ContactDetailsPageRoute({
+    _i9.Key? key,
+    required _i10.UserEntity userEntity,
+    List<_i8.PageRouteInfo>? children,
+  }) : super(
           ContactDetailsPageRoute.name,
+          args: ContactDetailsPageRouteArgs(
+            key: key,
+            userEntity: userEntity,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'ContactDetailsPageRoute';
 
-  static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
+  static const _i8.PageInfo<ContactDetailsPageRouteArgs> page =
+      _i8.PageInfo<ContactDetailsPageRouteArgs>(name);
+}
+
+class ContactDetailsPageRouteArgs {
+  const ContactDetailsPageRouteArgs({
+    this.key,
+    required this.userEntity,
+  });
+
+  final _i9.Key? key;
+
+  final _i10.UserEntity userEntity;
+
+  @override
+  String toString() {
+    return 'ContactDetailsPageRouteArgs{key: $key, userEntity: $userEntity}';
+  }
 }
 
 /// generated route for

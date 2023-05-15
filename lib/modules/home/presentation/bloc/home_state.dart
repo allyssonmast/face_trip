@@ -20,7 +20,7 @@ extension HomeStatusX on HomeStatus {
 class HomeState with _$HomeState {
   const factory HomeState({
     @Default(HomeStatus.initial) HomeStatus status,
-    List<ContactEntity>? contacts,
+    List<UserEntity>? contacts,
     UserEntity? user,
     String? errorMessage,
   }) = _HomeState;

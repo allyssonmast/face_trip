@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:facetrip/modules/home/domain/entities/contact.dart';
 import 'package:facetrip/modules/home/domain/usecases/getcontacts_usecase.dart';
 import 'package:facetrip/modules/login/domain/entities/user.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';

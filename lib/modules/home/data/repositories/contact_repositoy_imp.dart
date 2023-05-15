@@ -4,10 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:facetrip/core/error/login/failure.dart';
 import 'package:facetrip/modules/home/domain/repositories/contact_repository.dart';
+import 'package:facetrip/modules/login/domain/entities/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
-
-import '../../domain/entities/contact.dart';
 
 @Injectable(as: ContactRepository)
 class ContactRepositoryImp implements ContactRepository {
@@ -16,7 +15,7 @@ class ContactRepositoryImp implements ContactRepository {
 
   ContactRepositoryImp(this._store, this._auth);
   @override
-  Future<Either<Failure, List<ContactEntity>>> call() async {
+  Future<Either<Failure, List<UserEntity>>> call() async {
     try {
       var result = await _store
           .collection('users')
@@ -25,8 +24,7 @@ class ContactRepositoryImp implements ContactRepository {
 
       print(result.docs);
 
-      var list =
-          result.docs.map((e) => ContactEntity.fromJson(e.data())).toList();
+      var list = result.docs.map((e) => UserEntity.fromJson(e.data())).toList();
 
       return Right(list);
     } catch (e) {
@@ -35,7 +33,7 @@ class ContactRepositoryImp implements ContactRepository {
   }
 
   @override
-  Future<Either<Failure, bool>> addContact(ContactEntity contact) async {
+  Future<Either<Failure, bool>> addContact(UserEntity contact) async {
     try {
       await _store
           .collection('users')

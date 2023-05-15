@@ -48,7 +48,6 @@ class _LoginPageState extends State<LoginPage> {
     return BlocProvider(
       create: (_) => getIt<LoginBloc>(),
       child: Scaffold(
-        resizeToAvoidBottomInset: false,
         body: BlocConsumer<LoginBloc, LoginState>(
           listener: (context, state) {
             if (state is LoginFailure) {

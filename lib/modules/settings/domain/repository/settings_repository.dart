@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:facetrip/core/error/login/failure.dart';
 import 'package:facetrip/modules/login/domain/entities/user.dart';
 
-abstract class ContactRepository {
-  Future<Either<Failure, List<UserEntity>>> call();
-  Future<Either<Failure, bool>> addContact(UserEntity contact);
+abstract class SettingsRepository {
+  Future<Either<Failure, UserEntity>> getUserData();
+  Future<Either<Failure, Unit>> updateUserData(UserEntity user);
 }

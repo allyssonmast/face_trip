@@ -1,12 +1,12 @@
 import 'package:dartz/dartz.dart';
-import 'package:facetrip/modules/home/domain/entities/contact.dart';
 import 'package:facetrip/modules/home/domain/repositories/contact_repository.dart';
+import 'package:facetrip/modules/login/domain/entities/user.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../core/error/login/failure.dart';
 
 abstract class GetContactsUsecase {
-  Future<Either<Failure, List<ContactEntity>>> call();
+  Future<Either<Failure, List<UserEntity>>> call();
 }
 
 @Injectable(as: GetContactsUsecase)
@@ -15,7 +15,7 @@ class GetContactsUsecaseImp implements GetContactsUsecase {
 
   GetContactsUsecaseImp(this._repository);
   @override
-  Future<Either<Failure, List<ContactEntity>>> call() async {
+  Future<Either<Failure, List<UserEntity>>> call() async {
     return await _repository();
   }
 }

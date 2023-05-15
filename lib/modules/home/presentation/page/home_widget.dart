@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:facetrip/core/shered/route/go_route.dart';
 import 'package:facetrip/modules/home/presentation/bloc/home_bloc.dart';
 import 'package:facetrip/modules/home/presentation/widget/drawer_widget.dart';
 import 'package:facetrip/routes/names_routes.dart';
+import 'package:facetrip/routes/routes_imports.gr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -51,7 +53,8 @@ class _HomeWidgetState extends State<HomeWidget> {
                   var contact = list[index];
                   return ListTile(
                     title: Text(contact.name),
-                    onTap: () => GoTo().route(context, DETAILS_CONTACT),
+                    onTap: () => context.pushRoute(
+                        ContactDetailsPageRoute(userEntity: contact)),
                     leading: CircleAvatar(
                         backgroundImage: CachedNetworkImageProvider(
                       contact.url,
