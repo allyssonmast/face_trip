@@ -58,8 +58,6 @@ class _HomePageState extends State<HomePage> {
                     );
                   });
             }
-
-            // print(context.watch<HomeBloc>().state.contacts);
           },
           builder: (context, state) {
             return const HomeWidget();

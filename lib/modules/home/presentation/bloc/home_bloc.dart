@@ -20,10 +20,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       if (event is _Started) {
         _userService.loadCurrentUser();
 
+        emit(state.copyWith(user: event.userEntity));
         if (event.userEntity.listContact.isEmpty) {
           emit(state.copyWith(status: HomeStatus.loaded, contacts: []));
           return;
         }
+
 
         var result = await _getContactsUsecase(event.userEntity.listContact);
 

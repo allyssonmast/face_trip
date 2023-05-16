@@ -22,7 +22,9 @@ class HomeWidget extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           var currentUser = snapshot.data;
+
           context.read<HomeBloc>().add(HomeEvent.started(currentUser!));
+
           var list = context.watch<HomeBloc>().state.contacts ?? [];
 
           return Scaffold(

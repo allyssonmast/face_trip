@@ -5,19 +5,27 @@ import 'package:flutter/material.dart';
 class UserDetailsWidget extends StatelessWidget {
   final UserEntity userEntity;
   final UserEntity currentUser;
+  final bool isContact;
   const UserDetailsWidget(
-      {Key? key, required this.userEntity, required this.currentUser})
+      {Key? key,
+      required this.userEntity,
+      required this.currentUser,
+      required this.isContact})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    print(isContact);
     return ListTile(
       leading: CircleAvatar(
         radius: 30,
         backgroundImage: NetworkImage(userEntity.url),
       ),
       trailing: FollowWidget(
-          isFollowed: currentUser.listContact.contains(userEntity.email)),
+        isFollowed: isContact,
+        idContact: userEntity.email,
+        listContacts: currentUser.listContact,
+      ),
       title: Text(userEntity.name),
       subtitle: Text(
         userEntity.isTraveled ? 'Is traveling ' : 'Is not traveling',

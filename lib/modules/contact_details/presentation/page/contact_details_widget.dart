@@ -10,12 +10,22 @@ import 'package:flutter/material.dart';
 
 class ContactDetailsWidget extends StatelessWidget {
   final UserEntity userEntity;
-  const ContactDetailsWidget({Key? key, required this.userEntity})
+
+  const ContactDetailsWidget(
+      {Key? key, required this.userEntity, })
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var current = getIt<HomeBloc>().state.user;
+    var current = getIt<HomeBloc>().state.user ??
+        const UserEntity(
+            id: 'id',
+            email: 'email',
+            name: 'name',
+            description: 'description',
+            isTraveled: false,
+            url: 'url',
+            listContact: []);
 
     return Scaffold(
       body: NestedScrollView(
@@ -49,7 +59,11 @@ class ContactDetailsWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              UserDetailsWidget(userEntity: userEntity, currentUser: current!),
+              UserDetailsWidget(
+                userEntity: userEntity,
+                currentUser: current,
+                isContact: current.listContact.contains(userEntity.email),
+              ),
               Padding(
                 padding: paddingTitele,
                 child: Text(userEntity.description),
