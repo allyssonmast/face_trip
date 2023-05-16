@@ -14,6 +14,6 @@
   <img src="/screenshots/image6.png" alt="Exemplo de imagem no README" width="250" />
 </div>
 
-<img src="/screenshots/image7.png" alt="Exemplo de imagem no README" width="800" />
+<img src="/screenshots/image7.png" alt="Exemplo de imagem no README" width="250" />
 
 
