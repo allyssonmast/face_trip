@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:facetrip/modules/login/domain/entities/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 
@@ -21,10 +20,10 @@ class AuthRepositoryImpl implements AuthRepository {
       final user = result.user!;
       return right(user);
     } on FirebaseAuthException catch (e) {
-      print(e);
-      return left(const Failure.networkError());
+
+      return Left( Failure(message: e.message!));
     } catch (e) {
-      return left(const Failure.unexpectedError());
+      return Left( Failure.serverError());
     }
   }
 

@@ -20,7 +20,7 @@ class DetailsContactRepositoryImpl implements DetailsContactRepository {
           .update({'listContact': list});
       return const Right(true);
     } catch (e) {
-      return const Left(Failure.serverError());
+      return  Left(Failure(message: e.toString()));
     }
   }
 }

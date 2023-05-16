@@ -76,8 +76,6 @@ class MyAppRouterDelegate extends RouterDelegate<RouteConfig>
   @override
   RouteConfig get currentConfiguration => const RouteConfig();
 
-  @override
-  GlobalKey<NavigatorState>? get navigatorKeyvalue => navigatorKey;
 }
 
 class RouteConfig {

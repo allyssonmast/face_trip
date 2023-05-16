@@ -1,6 +1,5 @@
 import 'package:facetrip/core/constants/constants.dart';
 import 'package:facetrip/core/shered/widget/no_item_widget.dart';
-import 'package:facetrip/modules/contact_details/presentation/page/contact_details_widget.dart';
 import 'package:facetrip/modules/home/presentation/widget/contact_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

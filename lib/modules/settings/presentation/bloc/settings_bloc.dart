@@ -33,17 +33,17 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
           urlImage.fold(
               (l) => emit(state.copyWith(
                   status: SettingsStatus.error,
-                  errorMessage: 'Get Error trying update user!')), (url) {
+                  errorMessage: l.message)), (url) {
             newImage = url;
           });
         }
         var userNew = event.user.copyWith(url: newImage);
-        print(userNew.url);
+
         var result = await _updateCurrentUser(userNew);
         result.fold(
           (failure) => emit(state.copyWith(
               status: SettingsStatus.error,
-              errorMessage: 'Get Error trying update user!')),
+              errorMessage: failure.message)),
           (user) => emit(
             state.copyWith(status: SettingsStatus.updated, user: userNew),
           ),
@@ -53,7 +53,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
         // emit(state.copyWith(status: SettingsStatus.loading));
         var result = await _getCurrentUser();
         result.fold(
-          (failure) => emit(state.copyWith(status: SettingsStatus.error)),
+          (failure) => emit(state.copyWith(status: SettingsStatus.error,errorMessage: failure.message)),
           (user) => emit(
             state.copyWith(status: SettingsStatus.loaded, user: user),
           ),

@@ -15,7 +15,6 @@ class UserDetailsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(isContact);
     return ListTile(
       leading: CircleAvatar(
         radius: 30,

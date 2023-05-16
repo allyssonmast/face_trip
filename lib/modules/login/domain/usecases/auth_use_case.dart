@@ -3,7 +3,6 @@ import 'package:facetrip/core/error/login/failure.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 
-import '../entities/user.dart';
 import '../repositories/auth_repository.dart';
 
 abstract class AuthUseCase {

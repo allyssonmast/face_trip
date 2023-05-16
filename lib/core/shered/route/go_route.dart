@@ -6,6 +6,10 @@ class GoTo {
     await AutoRouter.of(context).pushNamed(route);
   }
 
+  void replace(BuildContext context, String route) async {
+    await AutoRouter.of(context).replaceNamed(route);
+  }
+
   void back(BuildContext context) {
     AutoRouter.of(context).back();
   }

@@ -1,11 +1,11 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:facetrip/core/error/login/failure.dart';
 import 'package:facetrip/modules/login/domain/entities/user.dart';
 import 'package:facetrip/modules/search/domain/repositories/search_repository.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -20,21 +20,20 @@ class SearchRepositoryImpl implements SearchRepository {
   Future<Either<Failure, List<UserEntity>>> searchUsersByEmail(
       String email) async {
     try {
-      print(email);
       final usersQuery = await _firestore
           .collection('users')
           .where('email', isEqualTo: email)
           .get();
-
-      print(usersQuery.docs.length);
 
       final usersDocs = usersQuery.docs;
       final users =
           usersDocs.map((doc) => UserEntity.fromJson(doc.data())).toList();
 
       return Right(users);
+    } on FirebaseAuthException catch (e) {
+      return Left( Failure(message: e.message!));
     } catch (e) {
-      return const Left(Failure.networkError());
+      return Left( Failure.serverError());
     }
   }
 

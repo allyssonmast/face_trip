@@ -1,6 +1,5 @@
 import 'package:facetrip/core/shered/route/go_route.dart';
 import 'package:facetrip/routes/names_routes.dart';
-import 'package:facetrip/routes/routes_imports.gr.dart';
 import 'package:flutter/material.dart';
 
 class SignupWidget extends StatelessWidget {
@@ -14,7 +13,7 @@ class SignupWidget extends StatelessWidget {
         const Text('Don\'t have an account yet? '),
         TextButton(
             onPressed: () {
-              GoTo().route(context,REGISTER_USER);
+              GoTo().route(context, REGISTER_USER);
             },
             child: const Text('SignUp'))
       ],

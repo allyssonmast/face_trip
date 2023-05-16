@@ -48,21 +48,16 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
         body: BlocConsumer<RegisterBloc, RegisterState>(
             listener: (context, state) {
-          switch (state.status) {
-            case RegisterStatus.initial:
-              break;
-            case RegisterStatus.submitting:
-              break;
-            case RegisterStatus.success:
-              break;
-            case RegisterStatus.error:
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(state.error),
-                ),
-              );
-              break;
-          }
+              if(state.status.isSuccess){
+                GoTo().replace(context, '/dashboard');
+              }
+              if(state.status.isError){
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(state.error),
+                  ),
+                );
+              }
         }, builder: (context, state) {
           return ReactiveForm(
             formGroup: _form,

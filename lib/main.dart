@@ -7,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'core/config/db_config.dart';
 import 'core/config/firebase_options.dart';
-import 'generate_database_fake.dart';
 import 'my_app.dart';
 
 void main() async {
@@ -20,5 +19,5 @@ void main() async {
   configureDependencies();
   Bloc.observer = TripBlocObserver();
   //await GenerateDbFake().addFakeUsersToFirestore();
-  runApp(const MyApp());
+  runApp(MyApp());
 }

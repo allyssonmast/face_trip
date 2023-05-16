@@ -17,8 +17,8 @@ import 'package:image_picker/image_picker.dart' as _i6;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:shared_preferences/shared_preferences.dart' as _i11;
 
-import 'core/config/firebase_modules_injectable.dart' as _i40;
-import 'core/config/shered_preferences.dart' as _i41;
+import 'core/config/firebase_modules_injectable.dart' as _i41;
+import 'core/config/shered_preferences.dart' as _i40;
 import 'core/config/user_server.dart' as _i13;
 import 'modules/contact_details/data/details_contact_repository.dart' as _i23;
 import 'modules/contact_details/domain/repository/details_contact_repository.dart'
@@ -118,10 +118,8 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i24.GetContactsUsecaseImp(gh<_i17.ContactRepository>()));
     gh.factory<_i25.GetCurrentUser>(
         () => _i25.GetCurrentUser(gh<_i9.SettingsRepository>()));
-    gh.lazySingleton<_i26.HomeBloc>(() => _i26.HomeBloc(
-          gh<_i24.GetContactsUsecase>(),
-          gh<_i13.UserService>(),
-        ));
+    gh.lazySingleton<_i26.HomeBloc>(
+        () => _i26.HomeBloc(gh<_i24.GetContactsUsecase>()));
     gh.factory<_i27.LoginBloc>(
         () => _i27.LoginBloc(loginUsecase: gh<_i16.AuthUseCase>()));
     gh.factory<_i28.SaveCreatedUserUseCase>(
@@ -162,6 +160,6 @@ extension GetItInjectableX on _i1.GetIt {
   }
 }
 
-class _$FirebaseInjectableModule extends _i40.FirebaseInjectableModule {}
+class _$RegisterModule extends _i40.RegisterModule {}
 
-class _$RegisterModule extends _i41.RegisterModule {}
+class _$FirebaseInjectableModule extends _i41.FirebaseInjectableModule {}

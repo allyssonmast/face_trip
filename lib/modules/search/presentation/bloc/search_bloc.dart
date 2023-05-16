@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:facetrip/core/error/login/failure.dart';
 import 'package:facetrip/modules/login/domain/entities/user.dart';
 import 'package:facetrip/modules/search/domain/usecases/get_users_saved.dart';
 import 'package:facetrip/modules/search/domain/usecases/save_local_user.dart';
@@ -31,8 +30,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         var result = await _searchUsersUseCase(event.query);
 
         result.fold(
-            (Failure) => emit(state.copyWith(
-                  status: SearchStatus.error,
+            (failure) => emit(state.copyWith(
+                  status: SearchStatus.error,errorMessage: failure.message
                 )),
             (contacts) => emit(state.copyWith(
                 contacts: contacts, status: SearchStatus.loaded)));
