@@ -3,10 +3,21 @@
 ## App demo
 
 
-[![Vídeo demonstrativo do aplicativo](video/video1.gif)](video/video1.mp4)
+![Exemplo de imagem no README](/screenshots/image1.png)
 
-[![Vídeo demonstrativo do aplicativo](video/video1.gif)](video/video1.mp4)
+![Exemplo de imagem no README](/screenshots/image2.png)
 
-[![Vídeo demonstrativo do aplicativo](video/video1.gif)](video/video1.mp4)
+![Exemplo de imagem no README](/screenshots/image3.png)
+
+![Exemplo de imagem no README](/screenshots/image4.png)
+
+![Exemplo de imagem no README](/screenshots/image5.png)
+
+![Exemplo de imagem no README](/screenshots/image6.png)
+
+![Exemplo de imagem no README](/screenshots/image7.png)
+
+
+
 
 
