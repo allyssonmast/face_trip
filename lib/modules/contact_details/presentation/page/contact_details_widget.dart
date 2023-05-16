@@ -71,7 +71,7 @@ class ContactDetailsWidget extends StatelessWidget {
               Padding(
                 padding: paddingTiteleMediaum,
                 child: Text(
-                  'Interesses',
+                  'Interests',
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
               ),

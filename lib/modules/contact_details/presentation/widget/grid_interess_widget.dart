@@ -18,7 +18,7 @@ class GridInteressWidget extends StatelessWidget {
       Color(0xFFDC143C),
       Color(0xFFFFC0CB)
     ];
-    var textIcons = ['Praia', 'Traking', 'Gastronomia', 'Cultural'];
+    var textIcons = ['Beach', 'Traking', 'Gastronomy', 'Cultural'];
     var titleList = ['Natal', 'Paris', 'Rio de Janeiro', 'Bonito'];
     var subList = [
       '* 3 dias de Viagem * Em grupo (4 pessoas) * Praia',
