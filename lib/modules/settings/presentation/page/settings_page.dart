@@ -16,10 +16,7 @@ class SettingsPage extends StatelessWidget {
     return Scaffold(
       body: BlocProvider<SettingsBloc>(
         create: (context) => getIt<SettingsBloc>(),
-        child: BlocConsumer<SettingsBloc, SettingsState>(
-          listener: (context, state) {
-            // TODO: implement listener
-          },
+        child: BlocBuilder<SettingsBloc, SettingsState>(
           builder: (context, state) {
             if (state.status.isInitial) {
               context.read<SettingsBloc>().add(const SettingsEvent.started());

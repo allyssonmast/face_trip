@@ -31,9 +31,10 @@ class SearchRepositoryImpl implements SearchRepository {
 
       return Right(users);
     } on FirebaseAuthException catch (e) {
-      return Left( Failure(message: e.message!));
+      return Left(Failure(message: e.message!));
     } catch (e) {
-      return Left( Failure.serverError());
+      print(e);
+      return Left(Failure.serverError());
     }
   }
 

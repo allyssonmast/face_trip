@@ -59,7 +59,6 @@ class _LoginPageState extends State<LoginPage> {
               await Future.delayed(const Duration(seconds: 1));
               _btnController.reset();
             } else if (state is LoginSuccess) {
-
               _btnController.success();
               GoTo().replace(context, '/dashboard');
             }
@@ -77,11 +76,14 @@ class _LoginPageState extends State<LoginPage> {
                       const WidgetTopWelcome(),
                       const SizedBox(height: 32),
                       const ReactWidget(name: 'Email'),
-                      const ReactWidget(name: 'Password'),
+                      const ReactWidget(
+                        name: 'Password',
+                        isPassword: true,
+                      ),
                       RoundedLoadingButton(
                         color: Theme.of(context).cardColor,
                         controller: _btnController,
-                        onPressed: () async{
+                        onPressed: () async {
                           if (_form.valid) {
                             final email = _form.value['email'] as String;
                             final password = _form.value['password'] as String;

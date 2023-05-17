@@ -21,9 +21,9 @@ class CreateRepositoryImp implements CreateRepository {
 
       return right(result.user!);
     } on FirebaseAuthException catch (e) {
-      return Left( Failure(message: e.message!));
+      return Left(Failure(message: e.message!));
     } catch (e) {
-      return Left( Failure.serverError());
+      return Left(Failure.serverError());
     }
   }
 
@@ -40,15 +40,16 @@ class CreateRepositoryImp implements CreateRepository {
         isTraveled: false,
         url: '',
         listContact: [],
+        listInterests: [],
       );
 
       return Right(await fireCollection
           .doc(_firebaseAuth.currentUser!.uid)
           .set(userCreated.toJson()));
-    }on FirebaseAuthException catch (e) {
-      return Left( Failure(message: e.message!));
+    } on FirebaseAuthException catch (e) {
+      return Left(Failure(message: e.message!));
     } catch (e) {
-      return Left( Failure.serverError());
+      return Left(Failure.serverError());
     }
   }
 }

@@ -9,35 +9,43 @@ environment:
   sdk: ">=2.19.6 <3.0.0"
 
 dependencies:
-  auto_route: null
-  bloc: null
-  cached_network_image: ^3.2.3
   cloud_firestore: null
-  cupertino_icons: null
-  dartz: null
-  equatable: null
+
   firebase_auth: null
   firebase_core: null
   firebase_storage: null
-  flutter:
-    sdk: flutter
-  flutter_bloc: ^8.1.2
-  flutter_dotenv: null
-  flutter_signin_button: null
-  font_awesome_flutter: null
-  freezed_annotation: null
+  firebase_dynamic_links:
+  firebase_messaging:
+  firebase_crashlytics:
+  firebase_analytics:
+
+  auto_route: null
+  bloc: null
   get_it: null
   injectable: null
   json_annotation: null
-  path_provider: null
-  pro_shered_preference: ^0.0.7
+
+  cupertino_icons: null
+  dartz: null
+  equatable: null
+
+  cached_network_image: ^3.2.3
+  flutter_bloc: ^8.1.2
+  flutter_signin_button: null
+  font_awesome_flutter: null
+  freezed_annotation: null
+  shared_preferences: ^2.1.1
+
   reactive_forms: null
   rounded_loading_button: ^2.1.0
-  shared_preferences: ^2.1.1
+
   flutter_staggered_grid_view:
   image_picker:
   share_plus:
-  rxdart:
+  flutter_dotenv:
+
+  flutter:
+    sdk: flutter
 
 dev_dependencies:
   auto_route_generator: null

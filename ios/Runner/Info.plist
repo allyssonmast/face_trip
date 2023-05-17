@@ -47,6 +47,11 @@
 		<true/>
 		<key>UIApplicationSupportsIndirectInputEvents</key>
 		<true/>
+		<key>FirebaseDynamicLinksCustomDomains</key>
+		<array>
+			<string>https://facetrip.com/contact/</string>
+			<string>https://facetrip.com/</string>
+		</array>
 		<key>NSPhotoLibraryUsageDescription</key>
 		<string>Request Permission</string>
 		<key>UIStatusBarHidden</key>

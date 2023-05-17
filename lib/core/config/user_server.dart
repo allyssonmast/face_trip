@@ -37,4 +37,5 @@ const fakeUser = UserEntity(
   isTraveled: false,
   url: '',
   listContact: [],
+  listInterests: [],
 );
