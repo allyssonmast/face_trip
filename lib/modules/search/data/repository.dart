@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:math';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
@@ -20,13 +19,10 @@ class SearchRepositoryImpl implements SearchRepository {
   Future<Either<Failure, List<UserEntity>>> searchUsersByEmail(
       String email) async {
     try {
-      print(email);
       final usersQuery = await _firestore
           .collection('users')
           .where('email', isEqualTo: email)
           .get();
-
-      print(usersQuery.docs.length);
 
       final usersDocs = usersQuery.docs;
       final users =

@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:facetrip/modules/login/domain/entities/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 

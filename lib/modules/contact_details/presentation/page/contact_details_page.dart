@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:facetrip/injection.dart';
 import 'package:facetrip/modules/contact_details/presentation/bloc/contact_details_bloc.dart';
-import 'package:facetrip/modules/home/presentation/bloc/home_bloc.dart';
 import 'package:facetrip/modules/login/domain/entities/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

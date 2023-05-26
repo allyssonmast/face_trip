@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:facetrip/core/shered/widget/my_circular_indicator.dart';
 import 'package:facetrip/core/shered/widget/react_widget.dart';
 import 'package:facetrip/injection.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +34,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> listEmail = [];
     return Scaffold(
       body: BlocProvider<HomeBloc>(
         create: (_) => getIt<HomeBloc>(),
