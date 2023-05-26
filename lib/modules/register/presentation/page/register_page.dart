@@ -6,6 +6,7 @@ import 'package:facetrip/modules/register/presentation/bloc/register_state.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:reactive_forms/reactive_forms.dart';
+import 'package:rounded_loading_button/rounded_loading_button.dart';
 
 import '../../../../injection.dart';
 import '../bloc/register_event.dart';
@@ -20,6 +21,7 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   late final FormGroup _form;
+  final _btnController = RoundedLoadingButtonController();
   @override
   void initState() {
     super.initState();
@@ -47,21 +49,20 @@ class _RegisterPageState extends State<RegisterPage> {
           centerTitle: true,
         ),
         body: BlocConsumer<RegisterBloc, RegisterState>(
-            listener: (context, state) {
-          switch (state.status) {
-            case RegisterStatus.initial:
-              break;
-            case RegisterStatus.submitting:
-              break;
-            case RegisterStatus.success:
-              break;
-            case RegisterStatus.error:
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(state.error),
-                ),
-              );
-              break;
+            listener: (context, state) async {
+          if (state.status.isSuccess) {
+            _btnController.success();
+            GoTo().replace(context, '/dashboard');
+          }
+          if (state.status.isError) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(state.error),
+              ),
+            );
+            _btnController.error();
+            await Future.delayed(const Duration(seconds: 1));
+            _btnController.reset();
           }
         }, builder: (context, state) {
           return ReactiveForm(
@@ -74,9 +75,14 @@ class _RegisterPageState extends State<RegisterPage> {
                   children: [
                     const ReactWidget(name: 'Name'),
                     const ReactWidget(name: 'Email'),
-                    const ReactWidget(name: 'Password'),
-                    ElevatedButton(
-                      onPressed: () {
+                    const ReactWidget(
+                      name: 'Password',
+                      isPassword: true,
+                    ),
+                    RoundedLoadingButton(
+                      color: Theme.of(context).cardColor,
+                      controller: _btnController,
+                      onPressed: () async {
                         if (_form.valid) {
                           final name = _form.value['name'] as String;
                           final email = _form.value['email'] as String;
@@ -92,6 +98,9 @@ class _RegisterPageState extends State<RegisterPage> {
                               );
                         } else {
                           _form.markAllAsTouched();
+                          _btnController.error();
+                          await Future.delayed(const Duration(seconds: 1));
+                          _btnController.reset();
                         }
                       },
                       child: const Text('Register'),

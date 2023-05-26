@@ -48,18 +48,19 @@ class _LoginPageState extends State<LoginPage> {
       create: (_) => getIt<LoginBloc>(),
       child: Scaffold(
         body: BlocConsumer<LoginBloc, LoginState>(
-          listener: (context, state) {
+          listener: (context, state) async {
             if (state is LoginFailure) {
-              _btnController.reset();
+              _btnController.error();
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(state.errorMessage),
                 ),
               );
+              await Future.delayed(const Duration(seconds: 1));
               _btnController.reset();
             } else if (state is LoginSuccess) {
               _btnController.success();
-              GoTo().route(context, '/');
+              GoTo().replace(context, '/dashboard');
             }
           },
           builder: (context, state) {
@@ -75,11 +76,14 @@ class _LoginPageState extends State<LoginPage> {
                       const WidgetTopWelcome(),
                       const SizedBox(height: 32),
                       const ReactWidget(name: 'Email'),
-                      const ReactWidget(name: 'Password'),
+                      const ReactWidget(
+                        name: 'Password',
+                        isPassword: true,
+                      ),
                       RoundedLoadingButton(
                         color: Theme.of(context).cardColor,
                         controller: _btnController,
-                        onPressed: () {
+                        onPressed: () async {
                           if (_form.valid) {
                             final email = _form.value['email'] as String;
                             final password = _form.value['password'] as String;
@@ -92,6 +96,8 @@ class _LoginPageState extends State<LoginPage> {
                                 );
                           } else {
                             _form.markAllAsTouched();
+                            _btnController.error();
+                            await Future.delayed(const Duration(seconds: 1));
                             _btnController.reset();
                           }
                         },

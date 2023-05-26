@@ -1,16 +1,19 @@
 # facetrip
 
-A new Flutter project.
+## App demo
 
-## Getting Started
+<div class="row">
+  <img src="/screenshots/image1.png" alt="Exemplo de imagem no README" width="250" />
+  <img src="/screenshots/image2.png" alt="Exemplo de imagem no README" width="250" />
+  <img src="/screenshots/image3.png" alt="Exemplo de imagem no README" width="250" />
+</div>
 
-This project is a starting point for a Flutter application.
+<div class="row">
+  <img src="/screenshots/image4.png" alt="Exemplo de imagem no README" width="250" />
+  <img src="/screenshots/image5.png" alt="Exemplo de imagem no README" width="250" />
+  <img src="/screenshots/image6.png" alt="Exemplo de imagem no README" width="250" />
+</div>
 
-A few resources to get you started if this is your first Flutter project:
+<img src="/screenshots/image7.png" alt="Exemplo de imagem no README" width="250" />
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.

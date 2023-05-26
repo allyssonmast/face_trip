@@ -13,6 +13,7 @@ class UserEntity with _$UserEntity {
     required bool isTraveled,
     required String url,
     required List<String> listContact,
+    required List<String> listInterests,
   }) = _User;
   factory UserEntity.fromJson(Map<String, Object?> json) =>
       _$UserEntityFromJson(json);

@@ -329,6 +329,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.1.4"
+  firebase_analytics:
+    dependency: "direct main"
+    description:
+      name: firebase_analytics
+      sha256: "0dfe8a3da3052400a266e8d929d2940545aac4c37ec1f1c5e11c0df3175ce9ad"
+      url: "https://pub.dev"
+    source: hosted
+    version: "10.4.0"
+  firebase_analytics_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_analytics_platform_interface
+      sha256: "45a023037fbb7d081bee5f6b0c421b33a48e2471ab27810bdbcc185c878bd317"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.6.0"
+  firebase_analytics_web:
+    dependency: transitive
+    description:
+      name: firebase_analytics_web
+      sha256: c60b1042cacf2c8075569717fe3b5f9e26936d2063bc8d749ca8b102fe6cfec0
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.4"
   firebase_auth:
     dependency: "direct main"
     description:
@@ -377,6 +401,62 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.5.0"
+  firebase_crashlytics:
+    dependency: "direct main"
+    description:
+      name: firebase_crashlytics
+      sha256: cc6cab05d4de3257408c167ec1e2e410f21c0764aea22f78481314496a1cc4ca
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.3.0"
+  firebase_crashlytics_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_crashlytics_platform_interface
+      sha256: b3b6017045866b981b566896a0de6114181bf9e91465221f2e89996f47a160b4
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.6.0"
+  firebase_dynamic_links:
+    dependency: "direct main"
+    description:
+      name: firebase_dynamic_links
+      sha256: "0ff901e53d85cab9eebdcd38f336d055635a70e5d9168749a663177513cd8f33"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.3.0"
+  firebase_dynamic_links_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_dynamic_links_platform_interface
+      sha256: "2bd8ed4fe85261d7a14d7a85abaae23279c8238a9535a451bef73ea46e0aebb8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.6"
+  firebase_messaging:
+    dependency: "direct main"
+    description:
+      name: firebase_messaging
+      sha256: "0b9f9c2bcfbb4f29b4b1ce2cbce7c17c2c7693f575cc87fcb7a073241845a42c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "14.6.0"
+  firebase_messaging_platform_interface:
+    dependency: transitive
+    description:
+      name: firebase_messaging_platform_interface
+      sha256: b86d6c8f665dc3fcbeae52b7ffb6f2a2dfa8544843468a6d9927b29a6ae2bd07
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.5.0"
+  firebase_messaging_web:
+    dependency: transitive
+    description:
+      name: firebase_messaging_web
+      sha256: "4e5e7e3ea9923f4cd32da828a4bd1a5c4a092161ff90f69f14dd34c5b8e05a81"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.5.0"
   firebase_storage:
     dependency: "direct main"
     description:
@@ -777,7 +857,7 @@ packages:
     source: hosted
     version: "1.8.2"
   path_provider:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: path_provider
       sha256: "3087813781ab814e4157b172f1a11c46be20179fcc9bea043e0fba36bc0acaa2"
@@ -872,14 +952,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.5.1"
-  pro_shered_preference:
-    dependency: "direct main"
-    description:
-      name: pro_shered_preference
-      sha256: "304623bab8944e603019a16580eb6c2b5b9dba115ebb7a8d61502a2e37f03445"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.7"
   process:
     dependency: transitive
     description:
@@ -937,7 +1009,7 @@ packages:
     source: hosted
     version: "2.1.0"
   rxdart:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: rxdart
       sha256: "0c7c0cedd93788d996e33041ffecda924cc54389199cde4e6a34b440f50044cb"

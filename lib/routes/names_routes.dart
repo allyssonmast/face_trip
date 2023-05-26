@@ -4,3 +4,4 @@ const LOGIN = '/login';
 const SEARCH_CONTACT = 'search-contact';
 const SETTINGS = 'settings';
 const HOME = 'home';
+const TRIP = '/trip/:id';

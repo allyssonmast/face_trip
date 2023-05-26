@@ -19,10 +19,23 @@ class UserService {
         .doc(_auth.currentUser!.uid)
         .snapshots()
         .map((event) {
-      _currentUser = UserEntity.fromJson(event.data()!);
-      return _currentUser!;
+      if (event.exists) {
+        return UserEntity.fromJson(event.data()!);
+      }
+      return fakeUser;
     });
   }
 
   UserEntity? get currentUser => _currentUser;
 }
+
+const fakeUser = UserEntity(
+  id: '',
+  email: '',
+  name: '',
+  description: '',
+  isTraveled: false,
+  url: '',
+  listContact: [],
+  listInterests: [],
+);

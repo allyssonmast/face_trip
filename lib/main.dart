@@ -19,6 +19,7 @@ void main() async {
   await DbConfi().init();
   configureDependencies();
   Bloc.observer = TripBlocObserver();
+  //uncomment the code below to generate a fake database in the emulator (First login, then uncomment)
   //await GenerateDbFake().addFakeUsersToFirestore();
-  runApp(const MyApp());
+  runApp(MyApp());
 }

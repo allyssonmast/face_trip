@@ -1,13 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:dartz/dartz.dart';
-
-import 'package:facetrip/core/error/login/failure.dart';
 
 part 'register_state.freezed.dart';
 
 enum RegisterStatus {
   initial,
   submitting,
+  saveDb,
+  setDefault,
   success,
   error,
 }
@@ -15,6 +14,8 @@ enum RegisterStatus {
 extension RegisterStatusX on RegisterStatus {
   bool get isInitial => this == RegisterStatus.initial;
   bool get isSubmitting => this == RegisterStatus.submitting;
+  bool get saveDb => this == RegisterStatus.saveDb;
+  bool get setDefault => this == RegisterStatus.setDefault;
   bool get isSuccess => this == RegisterStatus.success;
   bool get isError => this == RegisterStatus.error;
 }

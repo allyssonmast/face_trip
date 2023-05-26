@@ -16,6 +16,9 @@ _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
       listContact: (json['listContact'] as List<dynamic>)
           .map((e) => e as String)
           .toList(),
+      listInterests: (json['listInterests'] as List<dynamic>)
+          .map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
@@ -26,4 +29,5 @@ Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
       'isTraveled': instance.isTraveled,
       'url': instance.url,
       'listContact': instance.listContact,
+      'listInterests': instance.listInterests,
     };

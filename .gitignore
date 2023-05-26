@@ -14,6 +14,8 @@ ios/firebase_app_id_file.json.
 lib/core/config/firebase_options.dart.
 .svn/
 migrate_working_dir/
+/lib/core/config/firebase_options.dart
+
 
 # IntelliJ related
 *.iml

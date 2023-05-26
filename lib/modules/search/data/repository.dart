@@ -5,6 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:facetrip/core/error/login/failure.dart';
 import 'package:facetrip/modules/login/domain/entities/user.dart';
 import 'package:facetrip/modules/search/domain/repositories/search_repository.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -29,8 +30,11 @@ class SearchRepositoryImpl implements SearchRepository {
           usersDocs.map((doc) => UserEntity.fromJson(doc.data())).toList();
 
       return Right(users);
+    } on FirebaseAuthException catch (e) {
+      return Left(Failure(message: e.message!));
     } catch (e) {
-      return const Left(Failure.networkError());
+      print(e);
+      return Left(Failure.serverError());
     }
   }
 

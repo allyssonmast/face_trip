@@ -23,8 +23,10 @@ class ContactRepositoryImp implements ContactRepository {
       var list = result.docs.map((e) => UserEntity.fromJson(e.data())).toList();
 
       return Right(list);
-    } catch (e) {
-      return const Left(Failure.networkError());
+    } on FirebaseException catch (_, e) {
+      return  Left(Failure(message: e.toString()));
+    } catch (e){
+      return Left(Failure.serverError());
     }
   }
 
@@ -38,8 +40,10 @@ class ContactRepositoryImp implements ContactRepository {
           .add(contact.toJson());
 
       return const Right(true);
-    } catch (e) {
-      return const Left(Failure.serverError());
+    }  on FirebaseException catch (_, e) {
+      return  Left(Failure(message: e.toString()));
+    } catch (e){
+      return Left(Failure.serverError());
     }
   }
 }

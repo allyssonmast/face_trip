@@ -28,12 +28,10 @@ class SettingsRepositoryImpl implements SettingsRepository {
       final userEntity = UserEntity.fromJson(userDoc.data()!);
 
       return Right(userEntity);
-    } on FirebaseException catch (e) {
-      print(e);
-      return const Left(Failure.networkError());
+    } on FirebaseAuthException catch (e) {
+      return Left( Failure(message: e.message!));
     } catch (e) {
-      print(e);
-      return const Left(ServerFailure());
+      return Left( Failure.serverError());
     }
   }
 
@@ -49,10 +47,10 @@ class SettingsRepositoryImpl implements SettingsRepository {
       await userDocRef.update(userData);
 
       return const Right(unit);
-    } on FirebaseException catch (e) {
-      return const Left(Failure.networkError());
+    } on FirebaseAuthException catch (e) {
+      return Left( Failure(message: e.message!));
     } catch (e) {
-      return const Left(ServerFailure());
+      return Left( Failure.serverError());
     }
   }
 
@@ -66,10 +64,10 @@ class SettingsRepositoryImpl implements SettingsRepository {
       final snapshot = await uploadTask.whenComplete(() {});
       final imageUrl = await snapshot.ref.getDownloadURL();
       return Right(imageUrl);
-    } on FirebaseException catch (e) {
-      return const Left(Failure.networkError());
+    } on FirebaseAuthException catch (e) {
+      return Left( Failure(message: e.message!));
     } catch (e) {
-      return const Left(Failure.serverError());
+      return Left( Failure.serverError());
     }
   }
 }

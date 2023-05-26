@@ -7,115 +7,136 @@ import 'package:firebase_auth/firebase_auth.dart';
 class GenerateDbFake {
   List<UserEntity> fakeUsers = [
     UserEntity(
-        id: FirebaseAuth.instance.currentUser!.uid,
-        email: "user1@example.com",
-        name: "John Smith",
-        description:
-            "I love to travel and explore new places. There's nothing quite like experiencing new cultures and seeing the world.",
-        isTraveled: true,
-        url:
-            "https://randomuser.me/api/portraits/men/${Random().nextInt(100)}.jpg",
-        listContact: [
-          "contact1@example.com",
-          "contact2@example.com",
-        ]),
+      id: FirebaseAuth.instance.currentUser!.uid,
+      email: "user1@example.com",
+      name: "John Smith",
+      description:
+          "I love to travel and explore new places. There's nothing quite like experiencing new cultures and seeing the world.",
+      isTraveled: true,
+      url:
+          "https://randomuser.me/api/portraits/men/${Random().nextInt(100)}.jpg",
+      listContact: [
+        "contact1@example.com",
+        "contact2@example.com",
+      ],
+      listInterests: ["Beach", "Cultural"],
+    ),
     UserEntity(
-        id: "user_2",
-        email: "user2@example.com",
-        name: "Jane Doe",
-        description:
-            "I've been fortunate enough to travel to many different countries and see some amazing sights. I can't wait to plan my next adventure!",
-        isTraveled: false,
-        url:
-            "https://randomuser.me/api/portraits/women/${Random().nextInt(100)}.jpg",
-        listContact: [
-          "contact3@example.com",
-          "contact4@example.com",
-          FirebaseAuth.instance.currentUser!.email!
-        ]),
+      id: "user_2",
+      email: "user2@example.com",
+      name: "Jane Doe",
+      description:
+          "I've been fortunate enough to travel to many different countries and see some amazing sights. I can't wait to plan my next adventure!",
+      isTraveled: false,
+      url:
+          "https://randomuser.me/api/portraits/women/${Random().nextInt(100)}.jpg",
+      listContact: [
+        "contact3@example.com",
+        "contact4@example.com",
+        FirebaseAuth.instance.currentUser!.email!
+      ],
+      listInterests: ["Gastronomy", "Cultural"],
+    ),
     UserEntity(
-        id: "user_3",
-        email: "user3@example.com",
-        name: "Bob Johnson",
-        description:
-            "Traveling is my passion. I've been to some incredible places and met some amazing people along the way.",
-        isTraveled: true,
-        url: "https://randomuser.me/api/portraits/men/${Random().nextInt(100)}.jpg",
-        listContact: ["contact5@example.com", "contact6@example.com"]),
+      id: "user_3",
+      email: "user3@example.com",
+      name: "Bob Johnson",
+      description:
+          "Traveling is my passion. I've been to some incredible places and met some amazing people along the way.",
+      isTraveled: true,
+      url:
+          "https://randomuser.me/api/portraits/men/${Random().nextInt(100)}.jpg",
+      listContact: ["contact5@example.com", "contact6@example.com"],
+      listInterests: ["Beach", "Traking", "Gastronomy", "Cultural"],
+    ),
     UserEntity(
-        id: "user_4",
-        email: "user4@example.com",
-        name: "Alice Brown",
-        description:
-            "I believe that traveling is the best way to learn about the world and yourself. I can't wait to see where my next adventure takes me!",
-        isTraveled: true,
-        url:
-            "https://randomuser.me/api/portraits/women/${Random().nextInt(100)}.jpg",
-        listContact: [
-          "contact7@example.com",
-          "contact8@example.com",
-          FirebaseAuth.instance.currentUser!.email!
-        ]),
+      id: "user_4",
+      email: "user4@example.com",
+      name: "Alice Brown",
+      description:
+          "I believe that traveling is the best way to learn about the world and yourself. I can't wait to see where my next adventure takes me!",
+      isTraveled: true,
+      url:
+          "https://randomuser.me/api/portraits/women/${Random().nextInt(100)}.jpg",
+      listContact: [
+        "contact7@example.com",
+        "contact8@example.com",
+        FirebaseAuth.instance.currentUser!.email!
+      ],
+      listInterests: ["Cultural"],
+    ),
     UserEntity(
-        id: "user_5",
-        email: "user5@example.com",
-        name: "Peter Green",
-        description:
-            "There's nothing like the thrill of exploring a new place and discovering all that it has to offer. I'm always on the lookout for my next adventure.",
-        isTraveled: true,
-        url: "https://randomuser.me/api/portraits/men/${Random().nextInt(100)}.jpg",
-        listContact: ["contact9@example.com", "contact10@example.com"]),
+      id: "user_5",
+      email: "user5@example.com",
+      name: "Peter Green",
+      description:
+          "There's nothing like the thrill of exploring a new place and discovering all that it has to offer. I'm always on the lookout for my next adventure.",
+      isTraveled: true,
+      url:
+          "https://randomuser.me/api/portraits/men/${Random().nextInt(100)}.jpg",
+      listContact: ["contact9@example.com", "contact10@example.com"],
+      listInterests: ["Cultural"],
+    ),
     UserEntity(
-        id: "user_6",
-        email: "user6@example.com",
-        name: "Karen White",
-        description:
-            "Traveling is my way of life. It's where I feel most alive and free. I can't wait to see where my next adventure takes me!",
-        isTraveled: false,
-        url:
-            "https://randomuser.me/api/portraits/women/${Random().nextInt(100)}.jpg",
-        listContact: [
-          "contact11@example.com",
-          "contact12@example.com",
-          FirebaseAuth.instance.currentUser!.email!
-        ]),
+      id: "user_6",
+      email: "user6@example.com",
+      name: "Karen White",
+      description:
+          "Traveling is my way of life. It's where I feel most alive and free. I can't wait to see where my next adventure takes me!",
+      isTraveled: false,
+      url:
+          "https://randomuser.me/api/portraits/women/${Random().nextInt(100)}.jpg",
+      listContact: [
+        "contact11@example.com",
+        "contact12@example.com",
+        FirebaseAuth.instance.currentUser!.email!
+      ],
+      listInterests: ["Beach", "Gastronomy"],
+    ),
     UserEntity(
-        id: "user_7",
-        email: "user7@example.com",
-        name: "Michael Lee",
-        description:
-            "I've traveled to many different countries and experienced some amazing things. There's nothing quite like the feeling of being somewhere new.",
-        isTraveled: true,
-        url: "https://randomuser.me/api/portraits/men/${Random().nextInt(100)}.jpg",
-        listContact: ["contact13@example.com", "contact14@example.com"]),
+      id: "user_7",
+      email: "user7@example.com",
+      name: "Michael Lee",
+      description:
+          "I've traveled to many different countries and experienced some amazing things. There's nothing quite like the feeling of being somewhere new.",
+      isTraveled: true,
+      url:
+          "https://randomuser.me/api/portraits/men/${Random().nextInt(100)}.jpg",
+      listContact: ["contact13@example.com", "contact14@example.com"],
+      listInterests: ["Beach", "Traking", "Gastronomy", "Cultural"],
+    ),
     UserEntity(
-        id: "user_8",
-        email: "user8@example.com",
-        name: "Samantha Brown",
-        description:
-            "Traveling is my passion. I love experiencing new cultures and trying new things. I can't wait to plan my next adventure!",
-        isTraveled: false,
-        url:
-            "https://randomuser.me/api/portraits/women/${Random().nextInt(100)}.jpg",
-        listContact: [
-          "contact15@example.com",
-          "contact16@example.com",
-          FirebaseAuth.instance.currentUser!.email!
-        ]),
+      id: "user_8",
+      email: "user8@example.com",
+      name: "Samantha Brown",
+      description:
+          "Traveling is my passion. I love experiencing new cultures and trying new things. I can't wait to plan my next adventure!",
+      isTraveled: false,
+      url:
+          "https://randomuser.me/api/portraits/women/${Random().nextInt(100)}.jpg",
+      listContact: [
+        "contact15@example.com",
+        "contact16@example.com",
+        FirebaseAuth.instance.currentUser!.email!
+      ],
+      listInterests: ["Beach", "Traking", "Gastronomy", "Cultural"],
+    ),
     UserEntity(
-        id: "user_9",
-        email: "user9@example.com",
-        name: "David Kim",
-        description:
-            "I've been fortunate enough to travel to some incredible places and meet some amazing people. There's nothing quite like the feeling of being somewhere new.",
-        isTraveled: true,
-        url:
-            "https://randomuser.me/api/portraits/men/${Random().nextInt(100)}.jpg",
-        listContact: [
-          "contact17@example.com",
-          "contact18@example.com",
-          FirebaseAuth.instance.currentUser!.email!
-        ]),
+      id: "user_9",
+      email: "user9@example.com",
+      name: "David Kim",
+      description:
+          "I've been fortunate enough to travel to some incredible places and meet some amazing people. There's nothing quite like the feeling of being somewhere new.",
+      isTraveled: true,
+      url:
+          "https://randomuser.me/api/portraits/men/${Random().nextInt(100)}.jpg",
+      listContact: [
+        "contact17@example.com",
+        "contact18@example.com",
+        FirebaseAuth.instance.currentUser!.email!
+      ],
+      listInterests: ["Gastronomy", "Cultural"],
+    ),
     UserEntity(
         id: "user_10",
         email: "user10@example.com",
@@ -124,6 +145,7 @@ class GenerateDbFake {
             "Traveling is my escape. It's where I feel most alive and free. I can't wait to see where my next adventure takes me!",
         isTraveled: false,
         url: "https://randomuser.me/api/portraits/women/${Random().nextInt(100)}.jpg",
+        listInterests: ["Gastronomy", "Cultural"],
         listContact: ["contact19@example.com", "contact20@example.com"]),
   ];
   Future<void> addFakeUsersToFirestore() async {
@@ -139,6 +161,7 @@ class GenerateDbFake {
         "isTraveled": user.isTraveled,
         "url": user.url,
         "listContact": user.listContact,
+        "listInterests": user.listInterests,
       };
       await usersCollection.add(userData);
     }

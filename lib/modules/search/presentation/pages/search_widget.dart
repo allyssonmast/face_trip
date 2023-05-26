@@ -1,6 +1,5 @@
 import 'package:facetrip/core/constants/constants.dart';
 import 'package:facetrip/core/shered/widget/no_item_widget.dart';
-import 'package:facetrip/modules/contact_details/presentation/page/contact_details_widget.dart';
 import 'package:facetrip/modules/home/presentation/widget/contact_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -22,20 +21,13 @@ class SearchWidget extends StatelessWidget {
         Padding(
           padding: paddingSmall,
           child: CupertinoTextFormFieldRow(
-            placeholder: 'Search a friend',
+            placeholder: 'Type a email and search for a frind',
             padding: paddingMedium,
             controller: textController,
             decoration: BoxDecoration(
-              color: Colors.white38,
+              color: Colors.grey.shade200,
               borderRadius: BorderRadius.circular(10),
             ),
-            style: const TextStyle(
-              color: Colors.black,
-              fontSize: 16,
-            ),
-            onChanged: (value) {
-              // Faça algo com o valor do texto digitado
-            },
           ),
         ),
         Padding(
@@ -50,7 +42,7 @@ class SearchWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            'Last searchs',
+            'Friends',
             style: Theme.of(context).textTheme.headlineSmall,
           ),
         ),
