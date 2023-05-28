@@ -49,6 +49,9 @@ dependencies:
 
 dev_dependencies:
   auto_route_generator: null
+  integration_test:
+    sdk: flutter
+  mocktail:
 
   # Freezed libraries
   build_runner: null

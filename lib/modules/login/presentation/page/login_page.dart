@@ -75,12 +75,17 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       const WidgetTopWelcome(),
                       const SizedBox(height: 32),
-                      const ReactWidget(name: 'Email'),
+                      const ReactWidget(
+                        name: 'Email',
+                        key: Key('emailField'),
+                      ),
                       const ReactWidget(
                         name: 'Password',
                         isPassword: true,
+                        key: Key('passwordField'),
                       ),
                       RoundedLoadingButton(
+                        key: const Key('loginButton'),
                         color: Theme.of(context).cardColor,
                         controller: _btnController,
                         onPressed: () async {
