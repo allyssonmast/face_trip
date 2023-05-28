@@ -53,6 +53,7 @@ class _LoginPageState extends State<LoginPage> {
               _btnController.error();
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
+                  key: const Key('error_snacl'),
                   content: Text(state.errorMessage),
                 ),
               );

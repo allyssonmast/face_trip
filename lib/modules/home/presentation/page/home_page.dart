@@ -24,6 +24,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: const Key('home_page'),
       body: StreamBuilder<UserEntity>(
           stream: UserService(getIt<FirebaseAuth>(), getIt<FirebaseFirestore>())
               .loadCurrentUser(),
