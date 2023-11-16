@@ -17,8 +17,8 @@ import 'package:image_picker/image_picker.dart' as _i7;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:shared_preferences/shared_preferences.dart' as _i12;
 
-import 'core/config/firebase_modules_injectable.dart' as _i42;
-import 'core/config/shered_preferences.dart' as _i41;
+import 'core/config/firebase_modules_injectable.dart' as _i41;
+import 'core/config/shered_preferences.dart' as _i42;
 import 'core/config/user_server.dart' as _i14;
 import 'core/shered/deeplink/deeplink_server.dart' as _i3;
 import 'modules/contact_details/data/details_contact_repository.dart' as _i24;
@@ -164,6 +164,6 @@ extension GetItInjectableX on _i1.GetIt {
   }
 }
 
-class _$RegisterModule extends _i41.RegisterModule {}
+class _$FirebaseInjectableModule extends _i41.FirebaseInjectableModule {}
 
-class _$FirebaseInjectableModule extends _i42.FirebaseInjectableModule {}
+class _$RegisterModule extends _i42.RegisterModule {}
