@@ -23,7 +23,7 @@ class DrawerWidget extends StatelessWidget {
               backgroundImage: userEntity.photoURL != null
                   ? CachedNetworkImageProvider(
                       userEntity.photoURL!,
-                      errorListener: () => Container(),
+                      errorListener: (error) => Container(),
                     )
                   : null,
             ),

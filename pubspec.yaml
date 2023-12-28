@@ -6,7 +6,7 @@ publish_to: "none" # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.19.6 <3.0.0"
+  sdk: ">=3.2.0 <4.0.0"
 
 dependencies:
   cloud_firestore: null
@@ -29,7 +29,7 @@ dependencies:
   dartz: null
   equatable: null
 
-  cached_network_image: ^3.2.3
+  cached_network_image: ^3.3.0
   flutter_bloc: ^8.1.2
   flutter_signin_button: null
   font_awesome_flutter: null

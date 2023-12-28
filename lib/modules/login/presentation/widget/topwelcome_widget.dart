@@ -11,7 +11,7 @@ class WidgetTopWelcome extends StatelessWidget {
         Text('Welcome Buddies', style: Theme.of(context).textTheme.bodyLarge),
         Text(' Login to book your seat, I said its your seat',
             style: Theme.of(context).textTheme.bodyMedium),
-        const SizedBox(height: 30),
+        const SizedBox(height: 62),
       ],
     );
   }

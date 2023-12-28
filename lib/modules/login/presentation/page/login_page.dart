@@ -7,7 +7,6 @@ import 'package:facetrip/modules/login/presentation/widget/signup_widget.dart';
 import 'package:facetrip/modules/login/presentation/widget/topwelcome_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_signin_button/button_builder.dart';
 import 'package:flutter_signin_button/button_list.dart';
 import 'package:flutter_signin_button/button_view.dart';
 import 'package:reactive_forms/reactive_forms.dart';
@@ -42,6 +41,25 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
+  _logginButton(BuildContext context) async {
+    if (_form.valid) {
+      final email = _form.value['email'] as String;
+      final password = _form.value['password'] as String;
+
+      context.read<LoginBloc>().add(
+            LoginWithEmailButtonPressed(
+              email: email,
+              password: password,
+            ),
+          );
+    } else {
+      _form.markAllAsTouched();
+      _btnController.error();
+      await Future.delayed(const Duration(seconds: 1));
+      _btnController.reset();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -74,7 +92,6 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const WidgetTopWelcome(),
-                      const SizedBox(height: 32),
                       const ReactWidget(name: 'Email'),
                       const ReactWidget(
                         name: 'Password',
@@ -83,51 +100,20 @@ class _LoginPageState extends State<LoginPage> {
                       RoundedLoadingButton(
                         color: Theme.of(context).cardColor,
                         controller: _btnController,
-                        onPressed: () async {
-                          if (_form.valid) {
-                            final email = _form.value['email'] as String;
-                            final password = _form.value['password'] as String;
-
-                            context.read<LoginBloc>().add(
-                                  LoginWithEmailButtonPressed(
-                                    email: email,
-                                    password: password,
-                                  ),
-                                );
-                          } else {
-                            _form.markAllAsTouched();
-                            _btnController.error();
-                            await Future.delayed(const Duration(seconds: 1));
-                            _btnController.reset();
-                          }
-                        },
+                        onPressed: () => _logginButton(context),
                         child: const Text('Login'),
                       ),
                       const SignupWidget(),
                       const SizedBox(height: 16),
                       const DivideWidget(),
-                      SignInButton(
-                        Buttons.Google,
-                        onPressed: () {
-                          context.read<LoginBloc>().add(
-                                LoginWithGoogleButtonPressed(),
-                              );
-                        },
-                      ),
-                      SignInButton(
-                        Buttons.Facebook,
-                        onPressed: () {
-                          context.read<LoginBloc>().add(
-                                LoginWithFacebookButtonPressed(),
-                              );
-                        },
-                      ),
-                      SignInButtonBuilder(
-                        text: 'Sign in with Email',
-                        icon: Icons.phone_android,
-                        onPressed: () {},
-                        backgroundColor: Colors.blueGrey[700]!,
-                      )
+                      SignInButton(Buttons.Google,
+                          onPressed: () => context
+                              .read<LoginBloc>()
+                              .add(LoginWithGoogleButtonPressed())),
+                      SignInButton(Buttons.Facebook,
+                          onPressed: () => context
+                              .read<LoginBloc>()
+                              .add(LoginWithFacebookButtonPressed())),
                     ],
                   ),
                 ),

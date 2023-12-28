@@ -6,15 +6,15 @@ part of 'contact.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ContactEntity _$$_ContactEntityFromJson(Map<String, dynamic> json) =>
-    _$_ContactEntity(
+_$ContactEntityImpl _$$ContactEntityImplFromJson(Map<String, dynamic> json) =>
+    _$ContactEntityImpl(
       id: json['id'] as String,
       name: json['name'] as String,
       email: json['email'] as String,
       url: json['url'] as String,
     );
 
-Map<String, dynamic> _$$_ContactEntityToJson(_$_ContactEntity instance) =>
+Map<String, dynamic> _$$ContactEntityImplToJson(_$ContactEntityImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
