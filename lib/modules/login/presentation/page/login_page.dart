@@ -65,12 +65,14 @@ class _LoginPageState extends State<LoginPage> {
     return BlocProvider(
       create: (_) => getIt<LoginBloc>(),
       child: Scaffold(
+        resizeToAvoidBottomInset: false,
         body: BlocConsumer<LoginBloc, LoginState>(
           listener: (context, state) async {
             if (state is LoginFailure) {
               _btnController.error();
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
+                  key: const Key('error_snacl'),
                   content: Text(state.errorMessage),
                 ),
               );
@@ -92,12 +94,16 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const WidgetTopWelcome(),
-                      const ReactWidget(name: 'Email'),
                       const ReactWidget(
+                          key: Key('emailField'),
+                          name: 'Email'),
+                      const ReactWidget(
+                        key: Key('passwordField'),
                         name: 'Password',
                         isPassword: true,
                       ),
                       RoundedLoadingButton(
+                        key: const Key('loginButton'),
                         color: Theme.of(context).cardColor,
                         controller: _btnController,
                         onPressed: () => _logginButton(context),

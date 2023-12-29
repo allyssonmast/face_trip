@@ -13,7 +13,6 @@ void main() {
   testWidgets('Teste de login com sucesso', (WidgetTester tester) async {
     app.main();
     await tester.pumpAndSettle(const Duration(seconds: 1));
-
     await tester.tap(find.byKey(const Key('emailField')));
     await tester.enterText(
         find.byKey(const Key('emailField')), 'example@example.com');
